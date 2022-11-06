@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Hat : MonoBehaviour {
     [SerializeField]
@@ -8,12 +9,9 @@ public class Hat : MonoBehaviour {
     [SerializeField]
     private Vector3 _offsetOnPlayer;
     [SerializeField]
-    private float _throwSpeed = 15f;
-    [SerializeField]
     private bool _isOnPlayer = true;
 
     private bool _inAir = false;
-
     private Rigidbody2D _rigidBody;
     private Collider2D _collider;
 
@@ -39,26 +37,32 @@ public class Hat : MonoBehaviour {
         if (_isOnPlayer) {
             _isOnPlayer = false;
             SetPhysics(true);
-            _rigidBody.velocity = at * _throwSpeed;
+            _rigidBody.velocity = at;
         }
     }
 
     private void SetPhysics(bool enabled) {
         _collider.enabled = enabled;
         _rigidBody.simulated = enabled;
+        if (enabled) {
+            _rigidBody.position = transform.position;
+        }
     }
 
     private void OnCollisionExit2D(Collision2D other) {
-        if (other.gameObject.CompareTag("Player")) {
-            if (!_isOnPlayer) {
-                _inAir = true;
-            }
+        if (!_isOnPlayer && other.gameObject.CompareTag("Player")) {
+            _inAir = true;
         }
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
-        if (other.gameObject.CompareTag("Player") && _inAir) {
-            Catch();
+        if (_inAir) {
+            if (other.gameObject.CompareTag("Player")) {
+                Catch();
+            }
+            if (other.gameObject.CompareTag("World")) {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
         }
     }
 }

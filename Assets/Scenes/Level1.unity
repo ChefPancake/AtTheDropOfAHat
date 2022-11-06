@@ -247,6 +247,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 604ea0b7f25405347a48864b31b2d6de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _tagFilter:
+  - Player
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,7 +303,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 15
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -382,7 +384,7 @@ GameObject:
   - component: {fileID: 916428467}
   m_Layer: 0
   m_Name: WorldTileMap
-  m_TagString: Untagged
+  m_TagString: World
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8925,7 +8927,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 1623183492}
   _offsetOnPlayer: {x: 0, y: 1.2, z: -1}
-  _throwSpeed: 15
   _isOnPlayer: 1
 --- !u!4 &1309923521
 Transform:
@@ -9261,6 +9262,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isEnabled: 1
   _moveSpeed: 15
+  _throwSpeed: 15
 --- !u!61 &1623183496
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9380,7 +9382,7 @@ MonoBehaviour:
   m_Follow: {fileID: 1623183493}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 10
+    OrthographicSize: 15
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0

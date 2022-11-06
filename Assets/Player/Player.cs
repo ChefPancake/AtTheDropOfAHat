@@ -8,6 +8,8 @@ namespace DropOfAHat.Player {
 
         [SerializeField]
         private float _moveSpeed = 15f;
+        [SerializeField]
+        private float _throwSpeed = 20f;
 
         private Hat _hat;
         private Vector2 _moveInput;
@@ -42,7 +44,9 @@ namespace DropOfAHat.Player {
             var throwVec = new Vector3(
                 mousePos.x - _hat.transform.position.x,
                 mousePos.y - _hat.transform.position.y,
-                0f).normalized;
+                0f).normalized * _throwSpeed;
+            throwVec.x += _rigidBody.velocity.x;
+            throwVec.y += _rigidBody.velocity.y;
             _hat.Throw(throwVec);
         }
     }
