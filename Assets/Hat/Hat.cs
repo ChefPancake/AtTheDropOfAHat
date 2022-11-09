@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,10 +16,15 @@ public class Hat : MonoBehaviour {
     private Rigidbody2D _rigidBody;
     private Collider2D _collider;
 
+    public event Action Caught;
+
     private void Start() {
         _rigidBody = GetComponent<Rigidbody2D>();
         _collider = GetComponent<Collider2D>();
         SetPhysics(!_isOnPlayer);
+        if (_isOnPlayer) {
+            Caught?.Invoke();
+        }
     }
 
     private void Update() {
@@ -31,6 +37,7 @@ public class Hat : MonoBehaviour {
         _inAir = false;
         _isOnPlayer = true;
         SetPhysics(false);
+        Caught?.Invoke();
     }
 
     public void Throw(Vector3 at) {
