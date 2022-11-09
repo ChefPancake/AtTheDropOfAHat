@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DropOfAHat.Events;
 
 namespace DropOfAHat.Game {
     public class GameManager : MonoBehaviour {
