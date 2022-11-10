@@ -15,10 +15,12 @@ public class Hat : MonoBehaviour {
     private bool _inAir = false;
     private Rigidbody2D _rigidBody;
     private Collider2D _collider;
+    private GameEvents _events;
 
     public event Action Caught;
 
     private void Start() {
+        _events = FindObjectOfType<GameEvents>();
         _rigidBody = GetComponent<Rigidbody2D>();
         _collider = GetComponent<Collider2D>();
         SetPhysics(!_isOnPlayer);
@@ -68,8 +70,10 @@ public class Hat : MonoBehaviour {
                 Catch();
             }
             if (other.gameObject.CompareTag("World")) {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                _events.Send(new DroppedEvent());
             }
         }
     }
+
+    public struct DroppedEvent {}
 }
