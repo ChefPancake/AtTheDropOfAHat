@@ -10,6 +10,9 @@ namespace DropOfAHat.Player {
         private float _moveSpeed = 15f;
         [SerializeField]
         private float _throwSpeed = 20f;
+        [SerializeField]
+        private float _jumpSpeed = 10f;
+
 
         private Hat _hat;
         private Vector2 _moveInput;
@@ -31,7 +34,7 @@ namespace DropOfAHat.Player {
 
         private void OnJump() {
             if (_isEnabled) {
-                _rigidBody.velocity = new Vector2(_rigidBody.velocity.x, 10f);
+                _rigidBody.velocity = new Vector2(_rigidBody.velocity.x, _jumpSpeed);
             }
         }
 
