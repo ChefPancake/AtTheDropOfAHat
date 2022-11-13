@@ -32688,9 +32688,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isEnabled: 0
-  _moveSpeed: 15
-  _throwSpeed: 15
+  _moveSpeed: 18
   _jumpSpeed: 15
+  _groundAccel: 5
+  _airAccel: 10
+  _throwSpeed: 20
 --- !u!61 &1623183496
 BoxCollider2D:
   m_ObjectHideFlags: 0

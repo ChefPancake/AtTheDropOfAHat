@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,10 +10,15 @@ namespace DropOfAHat.Player {
         [SerializeField]
         private float _moveSpeed = 15f;
         [SerializeField]
-        private float _throwSpeed = 20f;
-        [SerializeField]
         private float _jumpSpeed = 10f;
 
+        [SerializeField]
+        private float _groundAccel = 10f;
+        [SerializeField]
+        private float _airAccel = 10f;
+
+        [SerializeField]
+        private float _throwSpeed = 20f;
 
         private Hat _hat;
         private Vector2 _moveInput;
@@ -24,6 +30,9 @@ namespace DropOfAHat.Player {
             _rigidBody = GetComponent<Rigidbody2D>();
             _hat = GetComponentInChildren<Hat>();
             _hat.Caught += DisableInput;
+            if (_moveSpeed == 0f) {
+                throw new ArgumentException($"{_moveSpeed} cannot be 0");
+            }
         }
 
         private void DisableInput() =>
@@ -39,13 +48,21 @@ namespace DropOfAHat.Player {
         }
 
         private void Update() {
-            var newVel = new Vector3(
-                _isEnabled ? _moveInput.x * _moveSpeed : 0f,
-                _rigidBody.velocity.y,
+            var forceVec = new Vector2(
+                _isEnabled ? _moveInput.x * ((byte)_groundAccel) : 0f,
                 0f);
-            _rigidBody.velocity = newVel;
+            _rigidBody.AddForce(forceVec);
         }
     
+        private void LateUpdate() {
+            var horiVelMag = Mathf.Abs(_rigidBody.velocity.x);
+            if (horiVelMag > _moveSpeed) {
+                _rigidBody.velocity = new Vector2(
+                    Mathf.Sign(_rigidBody.velocity.x) * _moveSpeed,
+                    _rigidBody.velocity.y);
+            }
+        }
+
         private void OnThrow() {
             if (!_isEnabled) {
                 _isEnabled = true;   
