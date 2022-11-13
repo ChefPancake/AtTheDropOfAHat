@@ -1,9 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using DropOfAHat.Player;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Hat : MonoBehaviour {
     [SerializeField]
@@ -17,7 +13,6 @@ public class Hat : MonoBehaviour {
     private Rigidbody2D _rigidBody;
     private Collider2D _collider;
     private GameEvents _events;
-
 
     private void Start() {
         _events = FindObjectOfType<GameEvents>();
