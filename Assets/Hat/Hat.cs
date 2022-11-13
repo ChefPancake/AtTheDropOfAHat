@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DropOfAHat.Player;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,16 +18,15 @@ public class Hat : MonoBehaviour {
     private Collider2D _collider;
     private GameEvents _events;
 
-    public event Action Caught;
 
     private void Start() {
         _events = FindObjectOfType<GameEvents>();
         _rigidBody = GetComponent<Rigidbody2D>();
         _collider = GetComponent<Collider2D>();
-        SetPhysics(!_isOnPlayer);
         if (_isOnPlayer) {
-            Caught?.Invoke();
+            Catch();
         }
+        _events.Subscribe<PlayerThrow.HatThrown>(OnThrown);
     }
 
     private void Update() {
@@ -39,14 +39,14 @@ public class Hat : MonoBehaviour {
         _inAir = false;
         _isOnPlayer = true;
         SetPhysics(false);
-        Caught?.Invoke();
+        _events.Send(new Caught());
     }
 
-    public void Throw(Vector3 at) {
+    private void OnThrown(PlayerThrow.HatThrown thrown) {
         if (_isOnPlayer) {
             _isOnPlayer = false;
             SetPhysics(true);
-            _rigidBody.velocity = at;
+            _rigidBody.velocity = thrown.ThrowVec;
         }
     }
 
@@ -76,4 +76,5 @@ public class Hat : MonoBehaviour {
     }
 
     public struct DroppedEvent {}
+    public struct Caught {}
 }

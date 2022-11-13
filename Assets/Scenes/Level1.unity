@@ -32901,9 +32901,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1623183493}
   - component: {fileID: 1623183494}
-  - component: {fileID: 1623183495}
   - component: {fileID: 1623183497}
   - component: {fileID: 1623183498}
+  - component: {fileID: 1623183495}
+  - component: {fileID: 1623183500}
+  - component: {fileID: 1623183499}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -32967,17 +32969,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1623183492}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36c4fe937d1b9584db04cad65e120b5d, type: 3}
+  m_Script: {fileID: 11500000, guid: c232d5bef58fccc41888afea42c5edb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isEnabled: 0
   _moveSpeed: 12
-  _jumpSpeed: 15
-  _floatForce: 1
-  _floatLengthSeconds: 2
   _groundAccel: 8
   _airAccel: 2
-  _throwSpeed: 12
 --- !u!50 &1623183497
 Rigidbody2D:
   serializedVersion: 4
@@ -33015,6 +33012,34 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
+--- !u!114 &1623183499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623183492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dd4ff5e744d4834dae165974079ebe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _jumpSpeed: 10
+  _floatForce: 1.2
+  _floatLengthSeconds: 1.5
+--- !u!114 &1623183500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623183492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ec3bce313b722e4ca5fd5a3864eb50e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _throwSpeed: 15
 --- !u!1 &1645099879
 GameObject:
   m_ObjectHideFlags: 0
