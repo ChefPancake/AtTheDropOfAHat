@@ -11,6 +11,10 @@ namespace DropOfAHat.Player {
         private float _moveSpeed = 15f;
         [SerializeField]
         private float _jumpSpeed = 10f;
+        [SerializeField]
+        private float _floatForce = 1f;
+        [SerializeField]
+        private float _floatLengthSeconds = 1f;
 
         [SerializeField]
         private float _groundAccel = 10f;
@@ -23,6 +27,9 @@ namespace DropOfAHat.Player {
         private bool _isGrounded = false;
         private Hat _hat;
         private Vector2 _moveInput;
+        private float _jumpInput;
+        private float _floatTime;
+
         private Rigidbody2D _rigidBody;
         private Camera _mainCam;
 
@@ -31,8 +38,8 @@ namespace DropOfAHat.Player {
             _rigidBody = GetComponent<Rigidbody2D>();
             _hat = GetComponentInChildren<Hat>();
             _hat.Caught += DisableInput;
-            if (_moveSpeed == 0f) {
-                throw new ArgumentException($"{_moveSpeed} cannot be 0");
+            if (_floatLengthSeconds == 0f) {
+                throw new ArgumentException($"{nameof(_floatLengthSeconds)} cannot be 0");
             }
         }
 
@@ -42,23 +49,42 @@ namespace DropOfAHat.Player {
         private void OnMove(InputValue input) =>
             _moveInput = input.Get<Vector2>();
 
-        private void OnJump() {
-            if (_isEnabled) {
-                _rigidBody.velocity = new Vector2(_rigidBody.velocity.x, _jumpSpeed);
-            }
+        private void OnJump(InputValue input) {
+            _jumpInput = input.Get<float>();
         }
 
         private void Update() {
+            _floatTime += Time.deltaTime;
+            if (_isEnabled) {
+                UpdateMovement();
+                UpdateJump();
+            }
+        }
+
+        private void UpdateMovement() {
             var accel = _isGrounded 
                 ? _groundAccel 
                 : _airAccel;
-            var forceVecX = _isEnabled 
-                ? _moveInput.x * accel
-                : 0f;
             var forceVec = new Vector2(
-                forceVecX,
+                _moveInput.x * accel,
                 0f);
             _rigidBody.AddForce(forceVec);
+        }
+
+        private void UpdateJump() {            
+            var isJumping = _jumpInput > 0;
+            if (isJumping) {
+                if (_isGrounded) {
+                    _rigidBody.velocity = new Vector2(
+                        _rigidBody.velocity.x,
+                        _jumpSpeed);
+                    _floatTime = 0;
+                } else if (_floatTime <= _floatLengthSeconds) {
+                    var t = _floatTime / _floatLengthSeconds;
+                    var lerpFloatForce = Mathf.Lerp(_floatForce, 0f, t);
+                    _rigidBody.AddForce(new Vector2(0f, lerpFloatForce));
+                }
+            }        
         }
     
         private void LateUpdate() {
