@@ -20,6 +20,7 @@ namespace DropOfAHat.Player {
         [SerializeField]
         private float _throwSpeed = 20f;
 
+        private bool _isGrounded = false;
         private Hat _hat;
         private Vector2 _moveInput;
         private Rigidbody2D _rigidBody;
@@ -48,8 +49,14 @@ namespace DropOfAHat.Player {
         }
 
         private void Update() {
+            var accel = _isGrounded 
+                ? _groundAccel 
+                : _airAccel;
+            var forceVecX = _isEnabled 
+                ? _moveInput.x * accel
+                : 0f;
             var forceVec = new Vector2(
-                _isEnabled ? _moveInput.x * ((byte)_groundAccel) : 0f,
+                forceVecX,
                 0f);
             _rigidBody.AddForce(forceVec);
         }
@@ -74,6 +81,18 @@ namespace DropOfAHat.Player {
                 throwVec.x += _rigidBody.velocity.x;
                 throwVec.y += _rigidBody.velocity.y;
                 _hat.Throw(throwVec);
+            }
+        }
+
+        private void OnCollisionEnter2D(Collision2D other) {
+            if (other.gameObject.CompareTag("World")) {
+                _isGrounded = true;
+            }
+        }
+
+        private void OnCollisionExit2D(Collision2D other) {
+            if (other.gameObject.CompareTag("World")) {
+                _isGrounded = false;
             }
         }
     }
