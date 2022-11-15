@@ -226,6 +226,7 @@ MonoBehaviour:
   _levelScenes:
   - Level1
   - Level2
+  - Level3
   _currentSceneIndex: 0
 --- !u!1001 &1667271463
 PrefabInstance:
