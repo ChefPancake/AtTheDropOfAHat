@@ -22,6 +22,7 @@ public class Hat : MonoBehaviour {
             Catch();
         }
         _events.Subscribe<PlayerThrow.HatThrown>(OnThrown);
+        _events.Subscribe<LevelEnd.HitEvent>(OnLevelEndHit);
     }
 
     private void Update() {
@@ -42,6 +43,12 @@ public class Hat : MonoBehaviour {
             _isOnPlayer = false;
             SetPhysics(true);
             _rigidBody.velocity = thrown.ThrowVec;
+        }
+    }
+
+    private void OnLevelEndHit(LevelEnd.HitEvent _) {
+        if (!_isOnPlayer) {
+            Catch();
         }
     }
 
