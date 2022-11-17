@@ -13,7 +13,6 @@ public class PlayerReset : MonoBehaviour {
     }
 
     private void OnLevelEndHit(LevelEnd.HitEvent _) {
-        transform.position = Vector3.zero;
         _rigidBody.velocity = Vector2.zero;
         _rigidBody.angularVelocity = 0f;
     }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ public class LevelManager : MonoBehaviour {
 
     private GameEvents _events;
     private GameObject _player;
-
+    
     private void Start() {
         _events = FindObjectOfType<GameEvents>();
         _events.Subscribe<LevelEnd.HitEvent>(OnLevelEndHit);
