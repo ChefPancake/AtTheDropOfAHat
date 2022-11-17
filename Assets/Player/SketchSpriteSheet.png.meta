@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 72
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -820,7 +820,6 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SketchSpriteSheet_25: 1011098870
       SketchSpriteSheet_20: 1050589313
       SketchSpriteSheet_29: -339330240
       SketchSpriteSheet_0: 435572340
@@ -850,9 +849,10 @@ TextureImporter:
       SketchSpriteSheet_28: -296125066
       SketchSpriteSheet_4: -1204399866
       SketchSpriteSheet_5: -1188845240
+      SketchSpriteSheet_25: 1011098870
       SketchSpriteSheet_6: 1607786926
-      SketchSpriteSheet_14: 533368676
       SketchSpriteSheet_23: 2031888405
+      SketchSpriteSheet_14: 533368676
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
