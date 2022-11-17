@@ -35,7 +35,7 @@ public class Hat : MonoBehaviour {
         _inAir = false;
         _isOnPlayer = true;
         SetPhysics(false);
-        _events.Send(new Caught());
+        _events.Send(new CaughtEvent());
     }
 
     private void OnThrown(PlayerThrow.HatThrown thrown) {
@@ -78,5 +78,5 @@ public class Hat : MonoBehaviour {
     }
 
     public struct DroppedEvent {}
-    public struct Caught {}
+    public struct CaughtEvent {}
 }

@@ -19,7 +19,7 @@ namespace DropOfAHat.Player {
             _rigidBody = GetComponent<Rigidbody2D>();
             _hat = GetComponentInChildren<Hat>();
             _events = FindObjectOfType<GameEvents>();
-            _events.Subscribe<Hat.Caught>(OnHatCaught);
+            _events.Subscribe<Hat.CaughtEvent>(OnHatCaught);
         }
 
         private void OnThrow() {
@@ -36,7 +36,7 @@ namespace DropOfAHat.Player {
             }
         }
 
-        private void OnHatCaught(Hat.Caught _) =>
+        private void OnHatCaught(Hat.CaughtEvent _) =>
             _isHoldingHat = true;
 
         public struct HatThrown {

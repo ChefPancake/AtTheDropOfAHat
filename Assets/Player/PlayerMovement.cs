@@ -20,7 +20,7 @@ namespace DropOfAHat.Player {
             _rigidBody = GetComponent<Rigidbody2D>();
             _events = FindObjectOfType<GameEvents>();
             _events.Subscribe<PlayerThrow.HatThrown>(OnHatThrown);
-            _events.Subscribe<Hat.Caught>(OnHatCaught);
+            _events.Subscribe<Hat.CaughtEvent>(OnHatCaught);
         }
 
         private void Update() {
@@ -47,7 +47,7 @@ namespace DropOfAHat.Player {
         private void OnHatThrown(PlayerThrow.HatThrown _) => 
             _isEnabled = true;
 
-        private void OnHatCaught(Hat.Caught _) =>
+        private void OnHatCaught(Hat.CaughtEvent _) =>
             _isEnabled = false;
 
         private void OnMove(InputValue input) =>

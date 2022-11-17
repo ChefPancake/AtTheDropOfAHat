@@ -26,7 +26,7 @@ namespace DropOfAHat.Player {
                 throw new ArgumentException($"{nameof(_floatLengthSeconds)} cannot be 0");
             }
             _events.Subscribe<PlayerThrow.HatThrown>(OnHatThrown);
-            _events.Subscribe<Hat.Caught>(OnHatCaught);
+            _events.Subscribe<Hat.CaughtEvent>(OnHatCaught);
         }
 
         void Update() {
@@ -51,7 +51,7 @@ namespace DropOfAHat.Player {
         private void OnHatThrown(PlayerThrow.HatThrown _) =>
             _isEnabled = true;
 
-        private void OnHatCaught(Hat.Caught _) =>
+        private void OnHatCaught(Hat.CaughtEvent _) =>
             _isEnabled = false;
 
         private void OnCollisionEnter2D(Collision2D other) {
