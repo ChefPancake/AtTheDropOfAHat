@@ -7,16 +7,8 @@ namespace DropOfAHat.Game {
 
         [SerializeField]
         private GameObject _toTrack;
-
         [SerializeField]
         private float _multiplier = 1f;
-
-        //We need the screen position of the mouse, the crosshairs 
-        //are going to be based on that. The logical position of the 
-        //crosshair would effectively be the screen position multiplied by 2,
-        //assuming that origin is the center of the screen
-
-        //for now we'll set the transform of this thing to that position
 
         private Vector3 _centerPos;
 

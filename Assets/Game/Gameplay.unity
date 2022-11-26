@@ -715,15 +715,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 883498238837413668, guid: 9e6b5d967828b0a4db27f804baf7866d, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 883498238837413668, guid: 9e6b5d967828b0a4db27f804baf7866d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 883498238837413668, guid: 9e6b5d967828b0a4db27f804baf7866d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 883498238837413668, guid: 9e6b5d967828b0a4db27f804baf7866d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -832,7 +832,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2694260665997512457, guid: 6a8139830cf28d14eb75f69ede3244a4, type: 3}
       propertyPath: _floatForce
-      value: 3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2694260665997512457, guid: 6a8139830cf28d14eb75f69ede3244a4, type: 3}
       propertyPath: _coyoteTimeLengthSeconds

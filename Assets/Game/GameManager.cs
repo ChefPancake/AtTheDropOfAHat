@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using DropOfAHat.Hat;
 using DropOfAHat.Player;
 using DropOfAHat.Utilities;
 

@@ -32,13 +32,22 @@ namespace DropOfAHat.Hat {
             _events.Subscribe<LevelEnd.HitEvent>(OnLevelEndHit);
         }
 
+        private void FixedUpdate() {
+            if (!_isOnPlayer) {
+                var velocity = _rigidBody.velocity;
+                var up = Vector3.up;
+                var angle = Vector3.Angle(up, velocity);
+                transform.rotation =  Quaternion.Euler(0f, 0f, angle);
+                _animator.SetFloat(
+                    VELOCITY_ANIMATION_STATE, 
+                    velocity.magnitude);
+            }
+        }
+
         private void Update() {
             if (_isOnPlayer) {
                 transform.position = _player.transform.position + _offsetOnPlayer;
-            } else {
-                _animator.SetFloat(
-                    VELOCITY_ANIMATION_STATE, 
-                    _rigidBody.velocity.magnitude);
+                transform.rotation = Quaternion.Euler(0f, 0f, 0f);
             }
         }
 
@@ -79,7 +88,6 @@ namespace DropOfAHat.Hat {
                 _inAir = true;
             }
         }
-
 
         private void OnTriggerEnter2D(Collider2D other) {
             if (_inAir) {
