@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 
 namespace DropOfAHat.Player {
     public class PlayerMovement : MonoBehaviour {
+        private const string IS_RUNNING_ANIMATION_STATE = "IsRunning";
+        
         [SerializeField]
         private float _moveSpeed = 15f;
         [SerializeField]
@@ -15,24 +17,45 @@ namespace DropOfAHat.Player {
         private bool _isGrounded = false;
         private Rigidbody2D _rigidBody;
         private GameEvents _events;
+        private Animator _animator;
 
         private void Start() {
             _rigidBody = GetComponent<Rigidbody2D>();
             _events = FindObjectOfType<GameEvents>();
+            _animator = GetComponentInChildren<Animator>();
             _events.Subscribe<PlayerThrow.HatThrown>(OnHatThrown);
             _events.Subscribe<Hat.CaughtEvent>(OnHatCaught);
         }
 
         private void Update() {
             if (_isEnabled) {
-                var accel = _isGrounded 
-                    ? _groundAccel 
-                    : _airAccel;
-                var forceVec = new Vector2(
-                    _moveInput.x * accel,
-                    0f);
-                _rigidBody.AddForce(forceVec);
+                Run();
+            } else {
+                _animator.SetBool(IS_RUNNING_ANIMATION_STATE, false);
             }
+        }
+
+        private void Run() {
+            var accel = _isGrounded
+                ? _groundAccel
+                : _airAccel;
+            var forceVec = new Vector2(
+                _moveInput.x * accel,
+                0f);
+            _rigidBody.AddForce(forceVec);
+            var movingRight = forceVec.x > Vector2.kEpsilon;
+            var movingLeft = forceVec.x < -Vector2.kEpsilon;
+            _animator.SetBool(
+                IS_RUNNING_ANIMATION_STATE,
+                movingLeft || movingRight);
+            var scaleX = 
+                (movingLeft, movingRight) switch {
+                    (false, false) => transform.localScale.x,
+                    (true, false) => -1f,
+                    (false, true) => 1f,
+                    (true, true) => 1f, // how tho
+                };
+            transform.localScale = new Vector2(scaleX, 1f);
         }
 
         private void LateUpdate() {
