@@ -660,6 +660,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 883498238358409305, guid: 9e6b5d967828b0a4db27f804baf7866d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1686286569, guid: 93accf96cc33ae3439a6f62ddb5cec1d, type: 3}
     - target: {fileID: 883498238837413668, guid: 9e6b5d967828b0a4db27f804baf7866d, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -708,6 +712,26 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 575808040}
+    - target: {fileID: 883498238837413669, guid: 9e6b5d967828b0a4db27f804baf7866d, type: 3}
+      propertyPath: _offsetOnPlayer.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 883498238837413670, guid: 9e6b5d967828b0a4db27f804baf7866d, type: 3}
+      propertyPath: m_Radius
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 883498238837413670, guid: 9e6b5d967828b0a4db27f804baf7866d, type: 3}
+      propertyPath: m_Offset.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 883498238837413670, guid: 9e6b5d967828b0a4db27f804baf7866d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 883498238837413671, guid: 9e6b5d967828b0a4db27f804baf7866d, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 883498238837413722, guid: 9e6b5d967828b0a4db27f804baf7866d, type: 3}
       propertyPath: m_Name
       value: Hat

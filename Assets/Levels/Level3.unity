@@ -254,9 +254,9 @@ GameObject:
   - component: {fileID: 942947168}
   - component: {fileID: 942947167}
   - component: {fileID: 942947166}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Border
-  m_TagString: World
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -61,14 +61,15 @@ namespace DropOfAHat.Hat {
                 _rigidBody.position = transform.position;
             }
         }
-
-        private void OnCollisionExit2D(Collision2D other) {
+        
+        private void OnTriggerExit2D(Collider2D other) {
             if (!_isOnPlayer && other.gameObject.CompareTag("Player")) {
                 _inAir = true;
             }
         }
 
-        private void OnCollisionEnter2D(Collision2D other) {
+
+        private void OnTriggerEnter2D(Collider2D other) {
             if (_inAir) {
                 if (other.gameObject.CompareTag("Player")) {
                     Catch();
