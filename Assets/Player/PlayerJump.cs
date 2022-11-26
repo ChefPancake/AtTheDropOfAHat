@@ -23,12 +23,6 @@ namespace DropOfAHat.Player {
         private float _floatTime;
         private float _coyoteTime;
 
-        //when landing, isGrounded and isInAir are set to true and false
-        //when leaving the ground, isGrounded is false, coyoteTime starts
-            //if when coyoteTime ends isGrounded is still false, 
-                //isInAir is set to true
-
-
         private Rigidbody2D _rigidBody;
         private GameEvents _events;
         private Animator _animator;
