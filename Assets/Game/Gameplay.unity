@@ -779,7 +779,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2694260665997512457, guid: 6a8139830cf28d14eb75f69ede3244a4, type: 3}
       propertyPath: _coyoteTimeLengthSeconds
-      value: 0.3
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2694260666738244705, guid: 6a8139830cf28d14eb75f69ede3244a4, type: 3}
       propertyPath: m_Sprite

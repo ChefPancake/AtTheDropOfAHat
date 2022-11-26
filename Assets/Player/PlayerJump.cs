@@ -1,4 +1,6 @@
 using System;
+using DropOfAHat.Game;
+using DropOfAHat.Hat;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -35,7 +37,7 @@ namespace DropOfAHat.Player {
                 throw new ArgumentException($"{nameof(_floatLengthSeconds)} cannot be 0");
             }
             _events.Subscribe<PlayerThrow.HatThrown>(OnHatThrown);
-            _events.Subscribe<Hat.CaughtEvent>(OnHatCaught);
+            _events.Subscribe<Hat.Hat.CaughtEvent>(OnHatCaught);
             _coyoteTime = _coyoteTimeLengthSeconds;
         }
 
@@ -71,7 +73,7 @@ namespace DropOfAHat.Player {
         private void OnHatThrown(PlayerThrow.HatThrown _) =>
             _isEnabled = true;
 
-        private void OnHatCaught(Hat.CaughtEvent _) =>
+        private void OnHatCaught(Hat.Hat.CaughtEvent _) =>
             _isEnabled = false;
 
         private void OnCollisionEnter2D(Collision2D other) {

@@ -1,8 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using DropOfAHat.Events;
+using DropOfAHat.Hat;
 using DropOfAHat.Player;
-using System;
+using DropOfAHat.Utilities;
 
 namespace DropOfAHat.Game {
     public class GameManager : MonoBehaviour {
@@ -12,11 +12,11 @@ namespace DropOfAHat.Game {
         private void Start() {
             _player = FindObjectOfType<PlayerMovement>().gameObject;
             _events = FindObjectOfType<GameEvents>();
-            _events.Subscribe<Hat.DroppedEvent>(OnHatDropped);
+            _events.Subscribe<Hat.Hat.DroppedEvent>(OnHatDropped);
             _events.Subscribe<LevelStart.LevelLoadedEvent>(OnLevelLoaded);
         }
 
-        private void OnHatDropped(Hat.DroppedEvent _) {
+        private void OnHatDropped(Hat.Hat.DroppedEvent _) {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             SceneManager.LoadScene("Level1", LoadSceneMode.Additive);
         }

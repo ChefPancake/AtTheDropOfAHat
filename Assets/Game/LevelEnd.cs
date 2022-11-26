@@ -1,28 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class LevelEnd : MonoBehaviour {
-    [SerializeField]
-    private string[] _tagFilter;
-    
-    private GameEvents _events;
+namespace DropOfAHat.Game {
+    public class LevelEnd : MonoBehaviour {
+        [SerializeField]
+        private string[] _tagFilter;
 
-    private void Start() {
-        _events = FindObjectOfType<GameEvents>();
-    }
+        private GameEvents _events;
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (_tagFilter.Contains(other.gameObject.tag)) {
-            _events.Send(new HitEvent(other.gameObject.tag));
+        private void Start() {
+            _events = FindObjectOfType<GameEvents>();
         }
-    }
 
-    public struct HitEvent {
-        public string Tag { get; }
+        private void OnTriggerEnter2D(Collider2D other) {
+            if (_tagFilter.Contains(other.gameObject.tag)) {
+                _events.Send(new HitEvent(other.gameObject.tag));
+            }
+        }
 
-        public HitEvent(string tag) =>
-            Tag = tag;
+        public struct HitEvent {
+            public string Tag { get; }
+
+            public HitEvent(string tag) =>
+                Tag = tag;
+        }
     }
 }

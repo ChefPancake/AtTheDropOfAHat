@@ -1,3 +1,4 @@
+using DropOfAHat.Game;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -24,7 +25,7 @@ namespace DropOfAHat.Player {
             _events = FindObjectOfType<GameEvents>();
             _animator = GetComponentInChildren<Animator>();
             _events.Subscribe<PlayerThrow.HatThrown>(OnHatThrown);
-            _events.Subscribe<Hat.CaughtEvent>(OnHatCaught);
+            _events.Subscribe<Hat.Hat.CaughtEvent>(OnHatCaught);
         }
 
         private void Update() {
@@ -70,7 +71,7 @@ namespace DropOfAHat.Player {
         private void OnHatThrown(PlayerThrow.HatThrown _) => 
             _isEnabled = true;
 
-        private void OnHatCaught(Hat.CaughtEvent _) =>
+        private void OnHatCaught(Hat.Hat.CaughtEvent _) =>
             _isEnabled = false;
 
         private void OnMove(InputValue input) =>

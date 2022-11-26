@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using DropOfAHat.Game;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,14 +9,14 @@ namespace DropOfAHat.Player {
         
         private bool _isHoldingHat = true;
         private Rigidbody2D _rigidBody;
-        private Camera _mainCam;
+        private UnityEngine.Camera _mainCam;
         private GameEvents _events;
 
         private void Start() {
-            _mainCam = FindObjectOfType<Camera>();
+            _mainCam = FindObjectOfType<UnityEngine.Camera>();
             _rigidBody = GetComponent<Rigidbody2D>();
             _events = FindObjectOfType<GameEvents>();
-            _events.Subscribe<Hat.CaughtEvent>(OnHatCaught);
+            _events.Subscribe<Hat.Hat.CaughtEvent>(OnHatCaught);
         }
 
         private void OnThrow() {
@@ -34,7 +33,7 @@ namespace DropOfAHat.Player {
             }
         }
 
-        private void OnHatCaught(Hat.CaughtEvent _) =>
+        private void OnHatCaught(Hat.Hat.CaughtEvent _) =>
             _isHoldingHat = true;
 
         public struct HatThrown {
