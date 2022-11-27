@@ -39,6 +39,9 @@ namespace DropOfAHat.Hat {
                 var velocity = _rigidBody.velocity;
                 var up = Vector3.up;
                 var angle = Vector3.Angle(up, velocity);
+                angle = velocity.x > 0
+                    ? -angle
+                    : angle;
                 transform.rotation =  Quaternion.Euler(0f, 0f, angle);
                 _animator.SetFloat(
                     VELOCITY_ANIMATION_STATE, 
