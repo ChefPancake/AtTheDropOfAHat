@@ -32,6 +32,7 @@ namespace DropOfAHat.Hat {
             }
             _events.Subscribe<PlayerThrow.HatThrown>(OnThrown);
             _events.Subscribe<LevelEnd.HitEvent>(OnLevelEndHit);
+            _events.Subscribe<LevelStart.LevelLoadedEvent>(OnLevelLoad);
         }
 
         private void FixedUpdate() {
@@ -73,6 +74,11 @@ namespace DropOfAHat.Hat {
                 SetPhysics(true);
                 _rigidBody.velocity = thrown.ThrowVec;
             }
+        }
+
+        private void OnLevelLoad(LevelStart.LevelLoadedEvent _) {
+            _isOnPlayer = true;
+            Catch();
         }
 
         private void OnLevelEndHit(LevelEnd.HitEvent _) {
