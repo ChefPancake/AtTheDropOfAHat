@@ -5,6 +5,7 @@ using UnityEngine;
 namespace DropOfAHat.Hat {
     public class Hat : MonoBehaviour {
         private const string IS_ON_PLAYER_ANIMATION_STATE = "IsOnPlayer";
+        private const string IS_POPPED_ANIMATION_STATE = "IsPopped";
         private const string VELOCITY_ANIMATION_STATE = "Velocity";
 
         [SerializeField]
@@ -19,6 +20,7 @@ namespace DropOfAHat.Hat {
         private Collider2D _collider;
         private GameEvents _events;
         private Animator _animator;
+        private ParticleSystem _particles;
 
         private void Start() {
             _events = FindObjectOfType<GameEvents>();
@@ -55,6 +57,7 @@ namespace DropOfAHat.Hat {
             _inAir = false;
             _isOnPlayer = true;
             _animator.SetBool(IS_ON_PLAYER_ANIMATION_STATE, true);
+            _animator.SetBool(IS_POPPED_ANIMATION_STATE, false);
             _animator.SetFloat(VELOCITY_ANIMATION_STATE, 0f);
             SetPhysics(false);
             _events.Send(new CaughtEvent());
@@ -95,9 +98,14 @@ namespace DropOfAHat.Hat {
                     Catch();
                 }
                 if (other.gameObject.CompareTag("World")) {
+                    _animator.SetBool(IS_POPPED_ANIMATION_STATE, true);
                     _events.Send(new DroppedEvent());
                 }
             }
+        }
+
+        public void Pop() {
+            Debug.Log("Popped");
         }
 
         public struct DroppedEvent { }
