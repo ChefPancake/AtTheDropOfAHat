@@ -21,9 +21,10 @@ public class EnemyHunting : MonoBehaviour {
     }
     
     private void Update() {
-        var moveForce = Vector2.ClampMagnitude(
-            _hat.transform.position - transform.position, 
-            _moveForce);
+        var moveForce = 
+            (_hat.transform.position - transform.position)
+            .normalized 
+            * _moveForce;
         _rigidBody.AddForce(moveForce);
     }
 
