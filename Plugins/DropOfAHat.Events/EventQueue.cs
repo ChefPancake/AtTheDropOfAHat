@@ -32,7 +32,11 @@ namespace DropOfAHat.Events {
                 var payloadTypeHash = gameEvent.PayloadType.GetHashCode();
                 if (_subscriptions.TryGetValue(payloadTypeHash, out var subs)) {
                     foreach (var subscription in subs) {
-                        subscription.Action(gameEvent);
+                        try {
+                            subscription.Action(gameEvent);
+                        } catch { 
+                            //eat it
+                        }
                     }
                 }
             }

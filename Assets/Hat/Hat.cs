@@ -97,15 +97,12 @@ namespace DropOfAHat.Hat {
                 if (other.gameObject.CompareTag("Player")) {
                     Catch();
                 }
-                if (other.gameObject.CompareTag("World")) {
+                if (other.gameObject.CompareTag("World") || other.gameObject.CompareTag("Enemy")) {
+                    SetPhysics(false);
                     _animator.SetBool(IS_POPPED_ANIMATION_STATE, true);
                     _events.Send(new DroppedEvent());
                 }
             }
-        }
-
-        public void Pop() {
-            Debug.Log("Popped");
         }
 
         public struct DroppedEvent { }

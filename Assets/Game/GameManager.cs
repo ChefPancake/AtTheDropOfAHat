@@ -20,14 +20,12 @@ namespace DropOfAHat.Game {
             _events.Subscribe<LevelStart.LevelLoadedEvent>(OnLevelLoaded);
         }
 
-        private void OnHatDropped(Hat.Hat.DroppedEvent _) {
+        private void OnHatDropped(Hat.Hat.DroppedEvent _) =>
             StartCoroutine(DelayThenRun(_delayAfterLoseSeconds, LoadFirstScene));
-        }
 
         private void OnLevelLoaded(LevelStart.LevelLoadedEvent loadedEvent) =>
             _player.transform.position =
                 loadedEvent.Start.transform.position.WithZeroZ();
-
 
         private void LoadFirstScene() {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
