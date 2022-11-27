@@ -1,11 +1,14 @@
 using DropOfAHat.Game;
+using DropOfAHat.Utilities;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace DropOfAHat.Player {
     public class PlayerThrow : MonoBehaviour {
+        private float THROW_COEFFICIENT = 2.5f;
+
         [SerializeField]
-        private float _throwSpeed = 20f;
+        private float _maxThrowSpeed = 80f;
         
         private bool _isHoldingHat = true;
         private Rigidbody2D _rigidBody;
@@ -23,12 +26,11 @@ namespace DropOfAHat.Player {
             if (_isHoldingHat) {
                 _isHoldingHat = false;
                 var mousePos = _mainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-                var throwVec = new Vector3(
-                    mousePos.x - transform.position.x,
-                    mousePos.y - transform.position.y,
-                    0f).normalized * _throwSpeed;
-                throwVec.x += _rigidBody.velocity.x;
-                throwVec.y += _rigidBody.velocity.y;
+                var directionVec = (mousePos - transform.position).WithZeroZ();
+                var throwVec = 
+                    Vector3.ClampMagnitude(
+                        directionVec * THROW_COEFFICIENT,
+                        _maxThrowSpeed);
                 _events.Send<HatThrown>(new HatThrown(throwVec));
             }
         }

@@ -332,6 +332,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1651451161, guid: 73b1a9a833fc68c41a933a6449b8b80c, type: 3}
+      propertyPath: _currentSceneIndex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3227199235560135974, guid: 73b1a9a833fc68c41a933a6449b8b80c, type: 3}
       propertyPath: m_Name
       value: Game
@@ -631,6 +635,14 @@ PrefabInstance:
     - target: {fileID: 2694260665997512455, guid: 6a8139830cf28d14eb75f69ede3244a4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2694260665997512457, guid: 6a8139830cf28d14eb75f69ede3244a4, type: 3}
+      propertyPath: _jumpSpeed
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2694260665997512457, guid: 6a8139830cf28d14eb75f69ede3244a4, type: 3}
+      propertyPath: _floatForce
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a8139830cf28d14eb75f69ede3244a4, type: 3}
