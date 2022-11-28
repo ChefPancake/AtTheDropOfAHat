@@ -14,6 +14,7 @@ namespace DropOfAHat.Game {
         private GameEvents _events;
         private GameObject _player;
         private LevelManager _levels;
+        private AudioSource _musicAudio;
         
         private uint _lastCheckpointOrdinal;
 
@@ -21,6 +22,7 @@ namespace DropOfAHat.Game {
             _player = FindObjectOfType<PlayerMovement>().gameObject;
             _events = FindObjectOfType<GameEvents>();
             _levels = FindObjectOfType<LevelManager>();
+            _musicAudio = GetComponent<AudioSource>();
             _events.Subscribe<Hat.Hat.DroppedEvent>(OnHatDropped);
             _events.Subscribe<LevelStart.LevelLoadedEvent>(OnLevelLoaded);
             _events.Subscribe<Checkpoint.HitEvent>(OnCheckpointHit);
@@ -49,11 +51,13 @@ namespace DropOfAHat.Game {
         }
 
         private void OnLevelLoaded(LevelStart.LevelLoadedEvent loadedEvent) {
+            _musicAudio.Stop();
             _player.transform.position =
                 FindObjectsOfType<Checkpoint>()
                     .FirstOrDefault(x => x.Ordinal.Equals(_lastCheckpointOrdinal))?
                     .transform.position.WithZeroZ()
                 ?? loadedEvent.Start.transform.position.WithZeroZ();
+            _musicAudio.Play();
         }
 
         private IEnumerator DelayThenRun(float seconds, Action action) {
