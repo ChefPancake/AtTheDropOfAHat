@@ -16,7 +16,11 @@ namespace DropOfAHat.Player {
         [SerializeField]
         private float _floatLengthSeconds = 1f;
         [SerializeField]
-        private float _coyoteTimeLengthSeconds = 0.25f; 
+        private float _coyoteTimeLengthSeconds = 0.25f;
+        [SerializeField]
+        private AudioClip _jumpStartSound;
+        [SerializeField]
+        private AudioClip _jumpLandSound;
 
         private bool _isEnabled = false;
         private bool _isGrounded = false;
@@ -28,11 +32,13 @@ namespace DropOfAHat.Player {
         private Rigidbody2D _rigidBody;
         private GameEvents _events;
         private Animator _animator;
+        private AudioSource _audio;
 
         void Start() {
             _rigidBody = GetComponent<Rigidbody2D>();
             _events = FindObjectOfType<GameEvents>();
             _animator = GetComponentInChildren<Animator>();
+            _audio = GetComponent<AudioSource>();
             if (_floatLengthSeconds == 0f) {
                 throw new ArgumentException($"{nameof(_floatLengthSeconds)} cannot be 0");
             }
@@ -51,6 +57,7 @@ namespace DropOfAHat.Player {
             }
             if (_isEnabled && _jumpInput > 0) {    
                 if (!_isInAir) {
+                    _audio.PlayOneShot(_jumpStartSound);
                     _rigidBody.velocity = new Vector2(
                         _rigidBody.velocity.x,
                         _jumpSpeed);
@@ -78,6 +85,9 @@ namespace DropOfAHat.Player {
 
         private void OnCollisionEnter2D(Collision2D other) {
             if (other.gameObject.CompareTag("World")) {
+                if (_isInAir) {
+                    _audio.PlayOneShot(_jumpLandSound);
+                }
                 _isGrounded = true;
                 SetIsInAir(false);
                 _coyoteTime = 0f;

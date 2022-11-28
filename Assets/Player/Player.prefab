@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2694260665997512462}
   - component: {fileID: 2694260665997512457}
   - component: {fileID: 575808048}
+  - component: {fileID: 575808049}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -119,8 +120,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 12
-  _groundAccel: 8
-  _airAccel: 2
+  _groundAccel: 15
+  _airAccel: 4
 --- !u!114 &2694260665997512462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ec3bce313b722e4ca5fd5a3864eb50e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _throwSpeed: 50
+  _maxThrowSpeed: 80
 --- !u!114 &2694260665997512457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,10 +147,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dd4ff5e744d4834dae165974079ebe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jumpSpeed: 10
-  _floatForce: 1.5
+  _jumpSpeed: 12
+  _floatForce: 2.5
   _floatLengthSeconds: 1.5
   _coyoteTimeLengthSeconds: 0.25
+  _jumpStartSound: {fileID: 8300000, guid: 3b82e0c32450f1a46b29cc1b543646ff, type: 3}
+  _jumpLandSound: {fileID: 8300000, guid: ea8bee0ce60e3094090c0cc11688bd62, type: 3}
 --- !u!114 &575808048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +165,102 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c932928b68219e449aa4f607bb45e4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &575808049
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2694260665997512454}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 69071dea4cb43034f973a94d1cb0777f, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2694260666738244701
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,6 +272,7 @@ GameObject:
   - component: {fileID: 2694260666738244706}
   - component: {fileID: 2694260666738244705}
   - component: {fileID: 1635366186}
+  - component: {fileID: 1129913220}
   m_Layer: 0
   m_Name: PlayerSprite
   m_TagString: Untagged
@@ -267,3 +367,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1129913220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2694260666738244701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c88407aca8223944ea68b473ac6a03d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _footstepClipLeft: {fileID: 8300000, guid: e13597e10221aec4c9e07ea40919ab91, type: 3}
+  _footstepClipRight: {fileID: 8300000, guid: d5d74b8426345d247b9147c3d6a82de0, type: 3}
