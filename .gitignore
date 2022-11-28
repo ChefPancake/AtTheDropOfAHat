@@ -60,3 +60,4 @@ crashlytics-build.properties
 
 **/Plugins/**/bin/**
 **/Plugins/**/obj/**
+[Aa]ssets/ThirdParty/**
