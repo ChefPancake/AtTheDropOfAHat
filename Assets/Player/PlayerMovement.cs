@@ -19,11 +19,13 @@ namespace DropOfAHat.Player {
         private Rigidbody2D _rigidBody;
         private GameEvents _events;
         private Animator _animator;
+        private AudioSource _hurtAudio;
 
         private void Start() {
             _rigidBody = GetComponent<Rigidbody2D>();
             _events = FindObjectOfType<GameEvents>();
             _animator = GetComponentInChildren<Animator>();
+            _hurtAudio = GetComponent<AudioSource>();
             _events.Subscribe<PlayerThrow.HatThrown>(OnHatThrown);
             _events.Subscribe<Hat.Hat.CaughtEvent>(OnHatCaught);
         }
@@ -86,6 +88,12 @@ namespace DropOfAHat.Player {
         private void OnCollisionExit2D(Collision2D other) {
             if (other.gameObject.CompareTag("World")) {
                 _isGrounded = false;
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D other) {
+            if (other.gameObject.CompareTag("Enemy")) {
+                _hurtAudio.Play();
             }
         }
     }

@@ -21,12 +21,14 @@ namespace DropOfAHat.Hat {
         private GameEvents _events;
         private Animator _animator;
         private ParticleSystem _particles;
+        private AudioSource _hurtAudio;
 
         private void Start() {
             _events = FindObjectOfType<GameEvents>();
             _rigidBody = GetComponent<Rigidbody2D>();
             _collider = GetComponent<Collider2D>();
             _animator = GetComponentInChildren<Animator>();
+            _hurtAudio = GetComponent<AudioSource>();
             if (_isOnPlayer) {
                 Catch();
             }
@@ -107,11 +109,16 @@ namespace DropOfAHat.Hat {
                     Catch();
                 }
                 if (other.gameObject.CompareTag("World") || other.gameObject.CompareTag("Enemy")) {
-                    SetPhysics(false);
-                    _animator.SetBool(IS_POPPED_ANIMATION_STATE, true);
-                    _events.Send(new DroppedEvent());
+                    Pop();
                 }
             }
+        }
+
+        private void Pop() {
+            SetPhysics(false);
+            _animator.SetBool(IS_POPPED_ANIMATION_STATE, true);
+            _events.Send(new DroppedEvent());
+            _hurtAudio.Play();
         }
 
         public struct DroppedEvent { }
