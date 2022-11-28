@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using DropOfAHat.Enemy;
 using DropOfAHat.Player;
 using DropOfAHat.Utilities;
 using System.Collections;

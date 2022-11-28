@@ -6,7 +6,6 @@ namespace DropOfAHat.Camera {
         private void Start() {
             FindObjectOfType<CinemachineConfiner>().m_BoundingShape2D =
                 GetComponent<PolygonCollider2D>();
-            Debug.Log("Loaded border");
         }
     }
 }
