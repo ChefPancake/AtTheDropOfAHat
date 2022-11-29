@@ -5,8 +5,9 @@ using UnityEngine;
 namespace DropOfAHat.Hat {
     internal interface IHatState {
         bool CanInteract => false;
+        bool CanThrow => false;
 
-        IHatState Catch(GameObject caughtBy) => this;
+        IHatState Catch(GameObject caughtBy, bool canThrow) => this;
         IHatState Throw() => this;
         IHatState LeaveObject(GameObject leaving) => this;
         IHatState Pop() => this;
@@ -20,8 +21,8 @@ namespace DropOfAHat.Hat {
         public static IHatState Spawn() =>
             new HatInAir();
 
-        public IHatState Catch(GameObject caughtBy) =>
-            new HatOnObject(caughtBy);
+        public IHatState Catch(GameObject caughtBy, bool canThrow) =>
+            new HatOnObject(caughtBy, canThrow);
 
         public IHatState Pop() =>
             new HatPopping();
@@ -40,15 +41,20 @@ namespace DropOfAHat.Hat {
 
     internal class HatOnObject : IHatState {
         public GameObject OnObject { get; }
+        public bool CanThrow { get; }
 
-        internal HatOnObject(GameObject onObject) =>
+        internal HatOnObject(GameObject onObject, bool canThrow) {
             OnObject = onObject;
+            CanThrow = canThrow;
+        }
 
-        public static IHatState SpawnOn(GameObject onObject) =>
-            new HatOnObject(onObject);
+        public static IHatState SpawnOn(GameObject onObject, bool canThrow) =>
+            new HatOnObject(onObject, canThrow);
 
         public IHatState Throw() =>
-            new HatLeavingObject(OnObject);
+            CanThrow 
+            ? new HatLeavingObject(OnObject)
+            : this;
     }
 
     internal class HatLeavingObject : IHatState {
@@ -125,12 +131,12 @@ namespace DropOfAHat.Hat {
         }
 
         public void Spawn() {
-            _hatState = HatOnObject.SpawnOn(_player);
-            Catch(_player);
+            _hatState = HatOnObject.SpawnOn(_player, true);
+            Catch(_player, true);
         }
 
-        public void Catch(GameObject caughtBy) {
-            _hatState = _hatState.Catch(caughtBy);
+        public void Catch(GameObject caughtBy, bool canThrow) {
+            _hatState = _hatState.Catch(caughtBy, canThrow);
             _animator.SetBool(IS_ON_OBJECT_ANIMATION_STATE, true);
             _animator.SetBool(IS_POPPED_ANIMATION_STATE, false);
             _animator.SetFloat(VELOCITY_ANIMATION_STATE, 0f);
@@ -141,11 +147,12 @@ namespace DropOfAHat.Hat {
         }
 
         private void OnThrown(PlayerThrow.HatThrown thrown) {
-            _hatState = _hatState.Throw();
-            _animator.SetBool(IS_ON_OBJECT_ANIMATION_STATE, false);
-            SetPhysics(_hatState.CanInteract);
-            Debug.Log(_hatState.CanInteract);
-            _rigidBody.velocity = thrown.ThrowVec;
+            if (_hatState.CanThrow) {
+                _hatState = _hatState.Throw();
+                _animator.SetBool(IS_ON_OBJECT_ANIMATION_STATE, false);
+                SetPhysics(_hatState.CanInteract);
+                _rigidBody.velocity = thrown.ThrowVec;
+            }
         }
 
         private void OnLevelLoad(LevelStart.LevelLoadedEvent _) =>
@@ -164,10 +171,10 @@ namespace DropOfAHat.Hat {
         }
 
         private void OnTriggerEnter2D(Collider2D other) {
-            if (other.gameObject.CompareTag("Player")) {
-                Catch(other.gameObject);
-            }
-            if (other.gameObject.CompareTag("World") || other.gameObject.CompareTag("Enemy")) {
+            if (other.gameObject.TryGetComponent<HatCatcher>(out var catcher)) {
+                Debug.Log(catcher.CanThrowFrom);
+                Catch(other.gameObject, catcher.CanThrowFrom);
+            } else if (other.gameObject.CompareTag("World") || other.gameObject.CompareTag("Enemy")) {
                 Pop();
             }
         }
