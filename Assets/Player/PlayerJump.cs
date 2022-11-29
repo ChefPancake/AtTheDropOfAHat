@@ -12,7 +12,7 @@ namespace DropOfAHat.Player {
         [SerializeField]
         private float _jumpSpeed = 10f;
         [SerializeField]
-        private float _floatForce = 1f;
+        private float _floatSpeed = 1f;
         [SerializeField]
         private float _floatLengthSeconds = 1f;
         [SerializeField]
@@ -47,7 +47,11 @@ namespace DropOfAHat.Player {
             _coyoteTime = _coyoteTimeLengthSeconds;
         }
 
-        void Update() {
+        private void FixedUpdate() {
+            _animator.SetFloat(Y_VEL_ANIMATION_STATE, _rigidBody.velocity.y);
+        }
+
+        private void Update() {
             _floatTime += Time.deltaTime;
             if (!_isGrounded && !_isInAir) {
                 _coyoteTime += Time.deltaTime;
@@ -57,21 +61,32 @@ namespace DropOfAHat.Player {
             }
             if (_isEnabled && _jumpInput > 0) {    
                 if (!_isInAir) {
-                    _audio.PlayOneShot(_jumpStartSound);
-                    _rigidBody.velocity = new Vector2(
-                        _rigidBody.velocity.x,
-                        _jumpSpeed);
-                    _floatTime = 0;
-                    _coyoteTime = _coyoteTimeLengthSeconds;
-                    SetIsInAir(true);
-                    _isGrounded = false;
+                    Jump();
                 } else if (_floatTime <= _floatLengthSeconds) {
-                    var t = _floatTime / _floatLengthSeconds;
-                    var lerpFloatForce = Mathf.Lerp(_floatForce, 0f, t);
-                    _rigidBody.AddForce(new Vector2(0f, lerpFloatForce));
+                    Float();
                 }
             }
-            _animator.SetFloat(Y_VEL_ANIMATION_STATE, _rigidBody.velocity.y);
+        }
+
+        private void Float() {
+            var t = _floatTime / _floatLengthSeconds;
+            Debug.Log($"t: {t}");
+            var lerpFloatSpeed = Mathf.Lerp(_floatSpeed * Time.deltaTime, 0f, t);
+            Debug.Log($"lerpFloatSpeed: {lerpFloatSpeed}");
+            _rigidBody.velocity = new Vector2(
+                _rigidBody.velocity.x,
+                Mathf.Clamp(_rigidBody.velocity.y + lerpFloatSpeed, 0f, _jumpSpeed));
+        }
+
+        private void Jump() {
+            _audio.PlayOneShot(_jumpStartSound);
+            _rigidBody.velocity = new Vector2(
+                _rigidBody.velocity.x,
+                _jumpSpeed);
+            _floatTime = 0;
+            _coyoteTime = _coyoteTimeLengthSeconds;
+            SetIsInAir(true);
+            _isGrounded = false;
         }
 
         private void OnJump(InputValue input) =>
