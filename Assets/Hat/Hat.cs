@@ -33,7 +33,7 @@ namespace DropOfAHat.Hat {
                 Catch();
             }
             _events.Subscribe<PlayerThrow.HatThrown>(OnThrown);
-            _events.Subscribe<LevelEnd.HitEvent>(OnLevelEndHit);
+            _events.Subscribe<GameManager.LevelEndedEvent>(OnLevelEnd);
             _events.Subscribe<LevelStart.LevelLoadedEvent>(OnLevelLoad);
         }
 
@@ -83,7 +83,7 @@ namespace DropOfAHat.Hat {
             Catch();
         }
 
-        private void OnLevelEndHit(LevelEnd.HitEvent _) {
+        private void OnLevelEnd(GameManager.LevelEndedEvent _) {
             if (!_isOnPlayer) {
                 Catch();
             }

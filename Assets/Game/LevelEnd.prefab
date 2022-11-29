@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 4473037580730658978}
   - component: {fileID: 4473037580730658976}
   - component: {fileID: 4473037580730658977}
-  - component: {fileID: 4473037580730658983}
+  - component: {fileID: 6323461969190027405}
   m_Layer: 0
   m_Name: LevelEnd
-  m_TagString: Untagged
+  m_TagString: LevelEnd
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,7 +112,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &4473037580730658983
+--- !u!114 &6323461969190027405
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,8 +121,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4473037580730658979}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38518adaacfb9e145822bbcd3d60ca93, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d6b9c93c6e1e9740b8836991e9fdb40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tagFilter:
+  _tagsFilter:
   - Player
+  _processTriggers: 1
+  _processCollisions: 0
+  _processEnters: 1
+  _processExits: 0

@@ -10,33 +10,34 @@ namespace DropOfAHat.Game {
     public class GameManager : MonoBehaviour {
         [SerializeField]
         private float _delayAfterLoseSeconds = 1.5f;
-        
-        private GameEvents _events;
+        [SerializeField]
         private GameObject _player;
+
+        private GameEvents _events;
         private LevelManager _levels;
         private AudioSource _musicAudio;
         
         private uint _lastCheckpointOrdinal;
 
         private void Start() {
-            _player = FindObjectOfType<PlayerMovement>().gameObject;
+            _player = _player ?? FindObjectOfType<PlayerMovement>().gameObject;
             _events = FindObjectOfType<GameEvents>();
             _levels = FindObjectOfType<LevelManager>();
             _musicAudio = GetComponent<AudioSource>();
             _events.Subscribe<Hat.Hat.DroppedEvent>(OnHatDropped);
             _events.Subscribe<LevelStart.LevelLoadedEvent>(OnLevelLoaded);
-            _events.Subscribe<Checkpoint.HitEvent>(OnCheckpointHit);
-            _events.Subscribe<LevelEnd.HitEvent>(OnLevelEndHit);
+            _events.Subscribe<HitBroadcast.HitEvent>(OnHitBroadcast);
         }
 
-        private void OnLevelEndHit(LevelEnd.HitEvent hit) {
-            _lastCheckpointOrdinal = 0;
-            _levels.LoadNextLevel();
-        }
-
-        private void OnCheckpointHit(Checkpoint.HitEvent hit) {
-            _lastCheckpointOrdinal = hit.Ordinal;
-            Debug.Log($"Hit Checkpoint {_lastCheckpointOrdinal}");
+        private void OnHitBroadcast(HitBroadcast.HitEvent hit) {
+            if (hit.Sender.CompareTag("LevelEnd")) {
+                _events.Send<LevelEndedEvent>(LevelEndedEvent.Instance);
+                _lastCheckpointOrdinal = 0;
+                _levels.LoadNextLevel();
+            } else if (hit.Sender.TryGetComponent<Checkpoint>(out var checkpoint)) {
+                _lastCheckpointOrdinal = checkpoint.Ordinal;
+                Debug.Log($"Hit Checkpoint {_lastCheckpointOrdinal}");
+            }
         }
 
         private void OnHatDropped(Hat.Hat.DroppedEvent _) =>
@@ -63,6 +64,11 @@ namespace DropOfAHat.Game {
         private IEnumerator DelayThenRun(float seconds, Action action) {
             yield return new WaitForSeconds(seconds);
             action();
+        }
+
+        public struct LevelEndedEvent {
+            public static LevelEndedEvent Instance { get; } = 
+                new LevelEndedEvent();
         }
     }
 }

@@ -9,10 +9,10 @@ namespace DropOfAHat.Player {
         private void Start() {
             _rigidBody = GetComponent<Rigidbody2D>();
             _events = FindObjectOfType<GameEvents>();
-            _events.Subscribe<LevelEnd.HitEvent>(OnLevelEndHit);
+            _events.Subscribe<GameManager.LevelEndedEvent>(OnLevelEnd);
         }
 
-        private void OnLevelEndHit(LevelEnd.HitEvent _) {
+        private void OnLevelEnd(GameManager.LevelEndedEvent _) {
             _rigidBody.velocity = Vector2.zero;
             _rigidBody.angularVelocity = 0f;
         }

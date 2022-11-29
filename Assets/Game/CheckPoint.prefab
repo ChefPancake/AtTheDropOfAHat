@@ -10,11 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4828754179019578174}
   - component: {fileID: 4828754179019578168}
-  - component: {fileID: 4828754179019578175}
   - component: {fileID: 4828754179019578169}
+  - component: {fileID: 4828754179019578175}
+  - component: {fileID: 7306240667886762581}
   m_Layer: 0
   m_Name: CheckPoint
-  m_TagString: Untagged
+  m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86,19 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4828754179019578175
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4828754179019578173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7e4045a5ae892146aad0ad74db73582, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _ordinal: 1
 --- !u!61 &4828754179019578169
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -125,3 +113,34 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &4828754179019578175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4828754179019578173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7e4045a5ae892146aad0ad74db73582, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ordinal: 1
+--- !u!114 &7306240667886762581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4828754179019578173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d6b9c93c6e1e9740b8836991e9fdb40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tagsFilter:
+  - Player
+  _processTriggers: 1
+  _processCollisions: 0
+  _processEnters: 1
+  _processExits: 0

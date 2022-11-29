@@ -13,13 +13,13 @@ namespace DropOfAHat.Game {
         private void Start() {
             _events = FindObjectOfType<GameEvents>();
             _events.Subscribe<LevelStart.LevelLoadedEvent>(OnLevelLoad);
-            _events.Subscribe<LevelEnd.HitEvent>(OnLevelEnd);
+            _events.Subscribe<GameManager.LevelEndedEvent>(OnLevelEnd);
         }
 
         private void OnLevelLoad(LevelStart.LevelLoadedEvent _) =>
             _instance = Instantiate(_enemyPrefab, transform.position.WithZeroZ(), Quaternion.identity);
 
-        private void OnLevelEnd(LevelEnd.HitEvent _) =>
+        private void OnLevelEnd(GameManager.LevelEndedEvent _) =>
             Destroy(_instance);
     }
 }
