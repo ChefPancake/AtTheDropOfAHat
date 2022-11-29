@@ -124,7 +124,7 @@ namespace DropOfAHat.Hat {
         }
 
         private void Update() {
-            if (_hatState is HatOnObject hat) {
+            if (_hatState is HatOnObject hat && hat.OnObject) {
                 transform.position = hat.OnObject.transform.position + _offsetOnPlayer;
                 transform.rotation = Quaternion.identity;
             }
@@ -142,7 +142,7 @@ namespace DropOfAHat.Hat {
             _animator.SetFloat(VELOCITY_ANIMATION_STATE, 0f);
             SetPhysics(_hatState.CanInteract);
             if (_hatState is HatOnObject) {
-                _events.Send(new CaughtEvent());
+                _events.Send(new CaughtEvent(caughtBy));
             }
         }
 
@@ -190,6 +190,12 @@ namespace DropOfAHat.Hat {
         }
 
         public struct DroppedEvent { }
-        public struct CaughtEvent { }
+
+        public struct CaughtEvent { 
+            public GameObject CaughtBy { get; }
+
+            public CaughtEvent(GameObject caughtBy) =>
+                CaughtBy = caughtBy;
+        }
     }
 }

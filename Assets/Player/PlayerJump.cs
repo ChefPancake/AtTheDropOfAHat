@@ -70,9 +70,7 @@ namespace DropOfAHat.Player {
 
         private void Float() {
             var t = _floatTime / _floatLengthSeconds;
-            Debug.Log($"t: {t}");
             var lerpFloatSpeed = Mathf.Lerp(_floatSpeed * Time.deltaTime, 0f, t);
-            Debug.Log($"lerpFloatSpeed: {lerpFloatSpeed}");
             _rigidBody.velocity = new Vector2(
                 _rigidBody.velocity.x,
                 Mathf.Clamp(_rigidBody.velocity.y + lerpFloatSpeed, 0f, _jumpSpeed));

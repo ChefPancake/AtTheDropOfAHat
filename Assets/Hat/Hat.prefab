@@ -4924,7 +4924,7 @@ GameObject:
   - component: {fileID: 1631399940}
   m_Layer: 0
   m_Name: Hat
-  m_TagString: Untagged
+  m_TagString: Hat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4959,7 +4959,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
   _offsetOnPlayer: {x: 0, y: 0, z: -1}
-  _isOnPlayer: 1
 --- !u!58 &883498238837413670
 CircleCollider2D:
   m_ObjectHideFlags: 0

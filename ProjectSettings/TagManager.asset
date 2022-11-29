@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - LevelEnd
   - Checkpoint
+  - Hat
   layers:
   - Default
   - TransparentFX
