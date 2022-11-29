@@ -353,6 +353,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 559936213}
     m_Modifications:
+    - target: {fileID: 2010779976136129295, guid: 233af82ebff3857479fa32e693f8b5a6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -33.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2010779976136129295, guid: 233af82ebff3857479fa32e693f8b5a6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 15.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4828754179019578173, guid: 233af82ebff3857479fa32e693f8b5a6, type: 3}
       propertyPath: m_Name
       value: CheckPoint
@@ -402,6 +410,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4828754179019578175, guid: 233af82ebff3857479fa32e693f8b5a6, type: 3}
+      propertyPath: _ordinal
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5227568422564353803, guid: 233af82ebff3857479fa32e693f8b5a6, type: 3}
       propertyPath: _ordinal
       value: 2
       objectReference: {fileID: 0}
@@ -457,11 +469,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 99216622600371712, guid: 5e067b6e4afe1024db72445d05804569, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19.33
+      value: -33.3
       objectReference: {fileID: 0}
     - target: {fileID: 99216622600371712, guid: 5e067b6e4afe1024db72445d05804569, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.13
+      value: 22.3
       objectReference: {fileID: 0}
     - target: {fileID: 99216622600371712, guid: 5e067b6e4afe1024db72445d05804569, type: 3}
       propertyPath: m_LocalPosition.z
@@ -508,6 +520,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 559936213}
     m_Modifications:
+    - target: {fileID: 2010779976136129295, guid: 233af82ebff3857479fa32e693f8b5a6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -32.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2010779976136129295, guid: 233af82ebff3857479fa32e693f8b5a6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 11.6
+      objectReference: {fileID: 0}
     - target: {fileID: 4828754179019578173, guid: 233af82ebff3857479fa32e693f8b5a6, type: 3}
       propertyPath: m_Name
       value: CheckPoint

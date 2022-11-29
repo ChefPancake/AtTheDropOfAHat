@@ -7,19 +7,30 @@ namespace DropOfAHat.Game {
         private GameObject _enemyPrefab;
     
         private GameEvents _events;
+        private uint _spawnOrdinal;
 
         private GameObject _instance;
 
         private void Start() {
             _events = FindObjectOfType<GameEvents>();
-            _events.Subscribe<LevelStart.LevelLoadedEvent>(OnLevelLoad);
+            _spawnOrdinal = 
+                transform.parent?
+                .GetComponentInChildren<Checkpoint>()?
+                .Ordinal ?? 0;
+            _events.Subscribe<GameManager.LevelStartEvent>(OnLevelLoad);
             _events.Subscribe<GameManager.LevelEndedEvent>(OnLevelEnd);
         }
 
-        private void OnLevelLoad(LevelStart.LevelLoadedEvent _) =>
-            _instance = Instantiate(_enemyPrefab, transform.position.WithZeroZ(), Quaternion.identity);
+        private void OnLevelLoad(GameManager.LevelStartEvent started) {
+            if (started.CheckpointOrdinal == _spawnOrdinal) {
+                _instance = Instantiate(_enemyPrefab, transform.position.WithZeroZ(), Quaternion.identity);
+            }
+        }
 
-        private void OnLevelEnd(GameManager.LevelEndedEvent _) =>
-            Destroy(_instance);
+        private void OnLevelEnd(GameManager.LevelEndedEvent _) {
+            if (_instance) {
+                Destroy(_instance);
+            }
+        }
     }
 }

@@ -93,8 +93,8 @@ namespace DropOfAHat.Player {
         private void OnHatThrown(PlayerThrow.HatThrown _) =>
             _isEnabled = true;
 
-        private void OnHatCaught(Hat.Hat.CaughtEvent _) =>
-            _isEnabled = false;
+        private void OnHatCaught(Hat.Hat.CaughtEvent caught) =>
+            _isEnabled = caught.CaughtBy != gameObject;
 
         private void OnCollisionEnter2D(Collision2D other) {
             if (other.gameObject.CompareTag("World")) {

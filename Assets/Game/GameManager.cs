@@ -65,7 +65,6 @@ namespace DropOfAHat.Game {
 
         private void ReloadLevel() {
             foreach (var enemy in FindObjectsOfType<EnemyHunting>()) {
-                Debug.Log($"Destroying {enemy.gameObject.name}");
                 Destroy(enemy.gameObject);
             }
             _playerAtEnd = false;
@@ -75,12 +74,13 @@ namespace DropOfAHat.Game {
 
         private void OnLevelLoaded(LevelStart.LevelLoadedEvent loadedEvent) {
             _musicAudio.Stop();
+            _musicAudio.Play();
             _player.transform.position =
                 FindObjectsOfType<Checkpoint>()
                     .FirstOrDefault(x => x.Ordinal.Equals(_lastCheckpointOrdinal))?
                     .transform.position.WithZeroZ()
                 ?? loadedEvent.Start.transform.position.WithZeroZ();
-            _musicAudio.Play();
+            _events.Send<LevelStartEvent>(new LevelStartEvent(_lastCheckpointOrdinal));
         }
 
         private IEnumerator DelayThenRun(float seconds, Action action) {
@@ -91,6 +91,13 @@ namespace DropOfAHat.Game {
         public struct LevelEndedEvent {
             public static LevelEndedEvent Instance { get; } = 
                 new LevelEndedEvent();
+        }
+
+        public struct LevelStartEvent {
+            public uint CheckpointOrdinal { get; }
+
+            public LevelStartEvent(uint checkpointOrdinal) =>
+                CheckpointOrdinal = checkpointOrdinal;
         }
     }
 }
