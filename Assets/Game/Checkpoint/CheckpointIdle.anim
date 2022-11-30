@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HuckRun
+  m_Name: CheckpointIdle
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,13 +20,11 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -1712197656, guid: eb7d8fb0f0a02f44ca1e2264de279f28, type: 3}
+      value: {fileID: -2034766461, guid: d8034e0043ee88743b9ab6c15e11cb52, type: 3}
     - time: 0.083333336
-      value: {fileID: -328517838, guid: eb7d8fb0f0a02f44ca1e2264de279f28, type: 3}
+      value: {fileID: -832214279, guid: d8034e0043ee88743b9ab6c15e11cb52, type: 3}
     - time: 0.16666667
-      value: {fileID: -1594921679, guid: eb7d8fb0f0a02f44ca1e2264de279f28, type: 3}
-    - time: 0.25
-      value: {fileID: -1542501941, guid: eb7d8fb0f0a02f44ca1e2264de279f28, type: 3}
+      value: {fileID: 1521455628, guid: d8034e0043ee88743b9ab6c15e11cb52, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -46,16 +44,15 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -1712197656, guid: eb7d8fb0f0a02f44ca1e2264de279f28, type: 3}
-    - {fileID: -328517838, guid: eb7d8fb0f0a02f44ca1e2264de279f28, type: 3}
-    - {fileID: -1594921679, guid: eb7d8fb0f0a02f44ca1e2264de279f28, type: 3}
-    - {fileID: -1542501941, guid: eb7d8fb0f0a02f44ca1e2264de279f28, type: 3}
+    - {fileID: -2034766461, guid: d8034e0043ee88743b9ab6c15e11cb52, type: 3}
+    - {fileID: -832214279, guid: d8034e0043ee88743b9ab6c15e11cb52, type: 3}
+    - {fileID: 1521455628, guid: d8034e0043ee88743b9ab6c15e11cb52, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.33333334
+    m_StopTime: 0.25
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

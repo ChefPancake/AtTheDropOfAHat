@@ -35,15 +35,18 @@ namespace DropOfAHat.Game {
             _events.Subscribe<LevelStart.LevelLoadedEvent>(OnLevelLoaded);
             _events.Subscribe<HitBroadcast.HitEvent>(OnHitBroadcast);
             _events.Subscribe<HitBroadcast.LeftEvent>(OnLeftBroadcast);
+            _musicAudio.Play();
         }
 
         public void PauseGame() {
+            _musicAudio.Pause();
             foreach (var obj in _objectsToDisableOnPause) {
                 obj.SetActive(false);
             }
         }
 
         public void StartGame() {
+            _musicAudio.UnPause();
             foreach (var obj in _objectsToDisableOnPause) {
                 obj.SetActive(true);
             }
@@ -88,13 +91,13 @@ namespace DropOfAHat.Game {
         }
 
         private void OnLevelLoaded(LevelStart.LevelLoadedEvent loadedEvent) {
-            _musicAudio.Stop();
-            //_musicAudio.Play();
-            _player.transform.position =
+            var checkpoint = 
                 FindObjectsOfType<Checkpoint>()
-                    .FirstOrDefault(x => x.Ordinal.Equals(_lastCheckpointOrdinal))?
-                    .transform.position.WithZeroZ()
-                ?? loadedEvent.Start.transform.position.WithZeroZ();
+                .FirstOrDefault(x => x.Ordinal.Equals(_lastCheckpointOrdinal));
+            checkpoint?.Reset();            
+            _player.transform.position =
+                checkpoint?.transform.position.WithZ(_player.transform.position.z)
+                    ?? loadedEvent.Start.transform.position.WithZeroZ();
             _events.Send<LevelStartEvent>(new LevelStartEvent(_lastCheckpointOrdinal));
         }
 
