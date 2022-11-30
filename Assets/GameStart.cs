@@ -1,5 +1,4 @@
 using System.Collections;
-using Cinemachine;
 using DropOfAHat.Game;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,6 +12,7 @@ public class GameStart : MonoBehaviour {
     private AudioSource _music;
     private GameTimer _timer;
     private GameManager _gameManager;
+    private MenuButton[] _buttons;
     
     private void Awake() {
         _logo.enabled = false;
@@ -23,9 +23,16 @@ public class GameStart : MonoBehaviour {
     private void Start() {
         _timer = FindObjectOfType<GameTimer>();
         _gameManager = FindObjectOfType<GameManager>();
+        _buttons = GetComponentsInChildren<MenuButton>();
         _gameManager.PauseGame();
         _timer.StopTimer();
         StartCoroutine(nameof(LoadMenu));            
+    }
+
+    public void ButtonClick(string eventName) {
+        if (eventName.Equals("StartGame")) {
+            StartCoroutine(StartGame());
+        }
     }
 
     private IEnumerator LoadMenu() {
@@ -34,13 +41,26 @@ public class GameStart : MonoBehaviour {
 
         _logo.enabled = true;
         yield return new WaitForSeconds(3f);
-        Color c = _gameCover.material.color;
+        Color color = _gameCover.material.color;
         for (float alpha = 1f; alpha >= 0f; alpha -= 0.02f)
         {
-            c.a = alpha;
-            _gameCover.material.color = c;
+            color.a = alpha;
+            _gameCover.material.color = color;
             yield return new WaitForSeconds(.02f);
         }
-        //enable menu input
+        foreach (var button in _buttons) {
+            button.Enable();
+        }
+    }
+
+    private IEnumerator StartGame() {
+        _gameManager.StartGame();
+        var unload = SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+        var maxWaitTime = 2f;
+        var waitTime = 0f;
+        while (!unload.isDone && waitTime < maxWaitTime) {
+            yield return new WaitForSeconds(0.1f);
+            waitTime += 0.1f;
+        }
     }
 }

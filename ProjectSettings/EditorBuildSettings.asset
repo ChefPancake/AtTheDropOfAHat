@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Levels/MenuOverlay.unity
+    path: Assets/Menu/MenuOverlay.unity
     guid: ca5e490a128dc814e9b86fff9fa69c63
   - enabled: 1
     path: Assets/Game/Gameplay.unity
