@@ -49,6 +49,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _delayAfterLoseSeconds: 1.5
+  _player: {fileID: 0}
+  _objectsToDisableOnPause:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &1651451161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,6 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelScenes:
+  - Level0
   - Level1
   - Level2
   - Level3

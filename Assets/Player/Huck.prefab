@@ -17,8 +17,9 @@ GameObject:
   - component: {fileID: 2694260665997512457}
   - component: {fileID: 575808048}
   - component: {fileID: 575808049}
+  - component: {fileID: 575808050}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Huck
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120,8 +121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 12
-  _groundAccel: 15
-  _airAccel: 4
+  _groundAccel: 20
+  _airAccel: 8
 --- !u!114 &2694260665997512462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,9 +148,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dd4ff5e744d4834dae165974079ebe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jumpSpeed: 12
-  _floatForce: 2.5
-  _floatLengthSeconds: 1.5
+  _jumpSpeed: 10
+  _floatSpeed: 50
+  _floatLengthSeconds: 0.8
   _coyoteTimeLengthSeconds: 0.25
   _jumpStartSound: {fileID: 8300000, guid: 3b82e0c32450f1a46b29cc1b543646ff, type: 3}
   _jumpLandSound: {fileID: 8300000, guid: ea8bee0ce60e3094090c0cc11688bd62, type: 3}
@@ -261,6 +262,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &575808050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2694260665997512454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abcdaa847cc5bc344baa291ac8517995, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canThrowFrom: 1
 --- !u!1 &2694260666738244701
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,7 +302,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2694260666738244701}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.08, y: 0, z: 0}
+  m_LocalPosition: {x: 0.21, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -336,8 +350,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 533368676, guid: 93accf96cc33ae3439a6f62ddb5cec1d, type: 3}
-  m_Color: {r: 0.8962264, g: 0.5821298, b: 0.51152545, a: 1}
+  m_Sprite: {fileID: 567779643, guid: eb7d8fb0f0a02f44ca1e2264de279f28, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

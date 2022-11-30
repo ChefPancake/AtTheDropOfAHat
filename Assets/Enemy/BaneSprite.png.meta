@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 087fbd3ba8fa70442a3fe2b98c237052
+guid: 2562eb02d7e714a4ab1ad425763feabd
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 72
+  spritePixelsToUnits: 96
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -117,13 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BadGuysketch_0
+      name: BaneSprite_0
       rect:
         serializedVersion: 2
-        x: 540
-        y: 1040
-        width: 936
-        height: 936
+        x: 545
+        y: 1052
+        width: 960
+        height: 900
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d56281e33460c4a40bd6e807a7d2c779
-      internalID: 1666780384
+      spriteID: 436a43694d425a9408a23991d416e3f7
+      internalID: 888044093
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BadGuysketch_1
+      name: BaneSprite_1
       rect:
         serializedVersion: 2
-        x: 540
-        y: 104
-        width: 936
-        height: 936
+        x: 545
+        y: 126
+        width: 960
+        height: 900
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,8 +152,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d53e2c9c8e6a63147b2274f03ef2d7b9
-      internalID: 1846387009
+      spriteID: 0d1fe868382d40942bf29c8d0e2a21e8
+      internalID: -75611039
       vertices: []
       indices: 
       edges: []
@@ -169,8 +169,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      BadGuysketch_0: 1666780384
-      BadGuysketch_1: 1846387009
+      BaneSprite_1: -75611039
+      BaneSprite_0: 888044093
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

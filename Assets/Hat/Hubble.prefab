@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 358270610452870509}
   - component: {fileID: 8318791126820012762}
   - component: {fileID: 8283250547833185165}
+  - component: {fileID: 951472869}
   m_Layer: 0
   m_Name: HatSprite
   m_TagString: Untagged
@@ -77,8 +78,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1686286569, guid: 93accf96cc33ae3439a6f62ddb5cec1d, type: 3}
-  m_Color: {r: 0.35826805, g: 0.60549587, b: 0.9150943, a: 1}
+  m_Sprite: {fileID: 301865201, guid: 20c057047bb172e4a930e82c3ae1bac6, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -125,7 +126,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -4845,7 +4846,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 446144055fe83644aa6f0ef3bfeee66e, type: 2}
+  - {fileID: 2100000, guid: ad0469e00cc9dbb43b4fc533990483a0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4909,6 +4910,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _popSound: {fileID: 8300000, guid: b57b818d8efb4db48a4e06ee64f0a738, type: 3}
+--- !u!114 &951472869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883498238358409311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e87f759c23ff5a744b58710f27ee22eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &883498238837413722
 GameObject:
   m_ObjectHideFlags: 0
@@ -4923,7 +4936,7 @@ GameObject:
   - component: {fileID: 883498238837413671}
   - component: {fileID: 1631399940}
   m_Layer: 0
-  m_Name: Hat
+  m_Name: Hubble
   m_TagString: Hat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4958,7 +4971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
-  _offsetOnPlayer: {x: 0, y: 0, z: -1}
+  _offsetOnPlayer: {x: 0.15, y: 1.1, z: -1}
 --- !u!58 &883498238837413670
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4972,9 +4985,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1.2}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.8
+  m_Radius: 1
 --- !u!50 &883498238837413671
 Rigidbody2D:
   serializedVersion: 4
