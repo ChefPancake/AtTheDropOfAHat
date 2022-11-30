@@ -5,6 +5,7 @@ using DropOfAHat.Utilities;
 using System.Collections;
 using System;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 namespace DropOfAHat.Game {
     public class GameManager : MonoBehaviour {
@@ -16,9 +17,13 @@ namespace DropOfAHat.Game {
         [SerializeField]
         private GameObject[] _objectsToDisableOnPause;
 
+        [SerializeField]
+        private string _endSceneName;
+
         private GameEvents _events;
         private LevelManager _levels;
         private AudioSource _musicAudio;
+        private GameTimer _timer;
         
         private uint _lastCheckpointOrdinal;
 
@@ -34,6 +39,7 @@ namespace DropOfAHat.Game {
             _player = _player ?? FindObjectOfType<PlayerMovement>().gameObject;
             _events = FindObjectOfType<GameEvents>();
             _levels = FindObjectOfType<LevelManager>();
+            _timer = FindObjectOfType<GameTimer>();
             _events.Subscribe<Hat.Hat.DroppedEvent>(OnHatDropped);
             _events.Subscribe<LevelStart.LevelLoadedEvent>(OnLevelLoaded);
             _events.Subscribe<HitBroadcast.HitEvent>(OnHitBroadcast);
@@ -69,14 +75,23 @@ namespace DropOfAHat.Game {
                 if (LevelComplete) {
                     _events.Send<LevelEndedEvent>(LevelEndedEvent.Instance);
                     _lastCheckpointOrdinal = 0;
-                    _levels.LoadNextLevel();
-                    _playerAtEnd = false;
-                    _hatAtEnd = false;
+                    if (_levels.TryLoadNextLevel()) {
+                        _playerAtEnd = false;
+                        _hatAtEnd = false;
+                    } else {
+                        LoadEndOfGame();
+                    }
                 }
             } else if (hit.Sender.TryGetComponent<Checkpoint>(out var checkpoint)) {
                 _lastCheckpointOrdinal = checkpoint.Ordinal;
                 Debug.Log($"Hit Checkpoint {_lastCheckpointOrdinal}");
             }
+        }
+
+        private void LoadEndOfGame() {
+            _timer.StopTimer();
+            PauseGame();
+            SceneManager.LoadScene(_endSceneName, LoadSceneMode.Additive);
         }
 
         private void OnHatDropped(Hat.Hat.DroppedEvent _) =>

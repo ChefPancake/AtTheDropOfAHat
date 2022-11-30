@@ -212,6 +212,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 883498238837413722, guid: 9e6b5d967828b0a4db27f804baf7866d, type: 3}
   m_PrefabInstance: {fileID: 1866131618}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &502491894 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 994480310, guid: 8b51cdeabca73eb43a1eb804d5427fad, type: 3}
+  m_PrefabInstance: {fileID: 1006633947}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &575808040 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2694260665997512454, guid: 6a8139830cf28d14eb75f69ede3244a4, type: 3}
@@ -337,6 +342,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1651451161, guid: 73b1a9a833fc68c41a933a6449b8b80c, type: 3}
+      propertyPath: _levelScenes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3227199235560135974, guid: 73b1a9a833fc68c41a933a6449b8b80c, type: 3}
       propertyPath: m_Name
       value: Game
@@ -390,6 +399,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 575808040}
     - target: {fileID: 3227199235560135976, guid: 73b1a9a833fc68c41a933a6449b8b80c, type: 3}
+      propertyPath: _endSceneName
+      value: ScoreScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 3227199235560135976, guid: 73b1a9a833fc68c41a933a6449b8b80c, type: 3}
+      propertyPath: _objectsToDisableOnPause.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3227199235560135976, guid: 73b1a9a833fc68c41a933a6449b8b80c, type: 3}
       propertyPath: _objectsToDisableOnPause.Array.data[0]
       value: 
       objectReference: {fileID: 575808040}
@@ -401,6 +418,30 @@ PrefabInstance:
       propertyPath: _objectsToDisableOnPause.Array.data[2]
       value: 
       objectReference: {fileID: 990056499}
+    - target: {fileID: 3227199235560135976, guid: 73b1a9a833fc68c41a933a6449b8b80c, type: 3}
+      propertyPath: _objectsToDisableOnPause.Array.data[3]
+      value: 
+      objectReference: {fileID: 502491894}
+    - target: {fileID: 3227199236494792352, guid: 73b1a9a833fc68c41a933a6449b8b80c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 3227199236494792352, guid: 73b1a9a833fc68c41a933a6449b8b80c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -35
+      objectReference: {fileID: 0}
+    - target: {fileID: 3227199236494792354, guid: 73b1a9a833fc68c41a933a6449b8b80c, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 2e980fa8727792145adbf0176d17a8be, type: 2}
+    - target: {fileID: 3227199236494792354, guid: 73b1a9a833fc68c41a933a6449b8b80c, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -1582972973696556197, guid: 2e980fa8727792145adbf0176d17a8be, type: 2}
+    - target: {fileID: 3227199236494792354, guid: 73b1a9a833fc68c41a933a6449b8b80c, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73b1a9a833fc68c41a933a6449b8b80c, type: 3}
 --- !u!1 &1687369127

@@ -56,6 +56,7 @@ public class GameStart : MonoBehaviour {
 
     private IEnumerator StartGame() {
         _gameManager.StartGame();
+        _timer.StartTimer();
         var unload = SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
         var maxWaitTime = 2f;
         var waitTime = 0f;

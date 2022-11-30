@@ -17,11 +17,16 @@ namespace DropOfAHat.Game {
             }
         }
 
-        public void LoadNextLevel() {
-            var nextSceneIndex = (_currentSceneIndex + 1) % _levelScenes.Length;
+        public bool TryLoadNextLevel() {
             SceneManager.UnloadSceneAsync(_levelScenes[_currentSceneIndex]);
-            SceneManager.LoadScene(_levelScenes[nextSceneIndex], LoadSceneMode.Additive);
-            _currentSceneIndex = nextSceneIndex;
+            var nextSceneIndex = _currentSceneIndex + 1;
+            if (nextSceneIndex == _levelScenes.Length) {
+                return false;
+            } else {
+                SceneManager.LoadScene(_levelScenes[nextSceneIndex], LoadSceneMode.Additive);
+                _currentSceneIndex = nextSceneIndex;
+                return true;
+            }
         }
 
         public void ReloadCurrentLevel() {
