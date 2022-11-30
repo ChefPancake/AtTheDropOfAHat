@@ -12,6 +12,9 @@ namespace DropOfAHat.Game {
         private float _delayAfterLoseSeconds = 1.5f;
         [SerializeField]
         private GameObject _player;
+        
+        [SerializeField]
+        private GameObject[] _objectsToDisableOnPause;
 
         private GameEvents _events;
         private LevelManager _levels;
@@ -32,6 +35,18 @@ namespace DropOfAHat.Game {
             _events.Subscribe<LevelStart.LevelLoadedEvent>(OnLevelLoaded);
             _events.Subscribe<HitBroadcast.HitEvent>(OnHitBroadcast);
             _events.Subscribe<HitBroadcast.LeftEvent>(OnLeftBroadcast);
+        }
+
+        public void PauseGame() {
+            foreach (var obj in _objectsToDisableOnPause) {
+                obj.SetActive(false);
+            }
+        }
+
+        public void StartGame() {
+            foreach (var obj in _objectsToDisableOnPause) {
+                obj.SetActive(true);
+            }
         }
 
         private void OnLeftBroadcast(HitBroadcast.LeftEvent left) {

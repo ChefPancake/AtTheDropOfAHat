@@ -18,6 +18,7 @@ namespace DropOfAHat.Game {
                 camera.pixelWidth / 2,
                 camera.pixelHeight / 2,
                 0f);
+            Cursor.visible = false;
         }
 
         private void Update() {

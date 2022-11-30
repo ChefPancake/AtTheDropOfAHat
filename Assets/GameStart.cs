@@ -9,20 +9,21 @@ public class GameStart : MonoBehaviour {
     private SpriteRenderer _logo;
     [SerializeField]
     private SpriteRenderer _gameCover;
-    [SerializeField]
-    private Color _gameCoverColor;
 
     private AudioSource _music;
     private GameTimer _timer;
+    private GameManager _gameManager;
     
     private void Awake() {
         _logo.enabled = false;
-        _gameCover.material.color = _gameCoverColor;
+        _gameCover.enabled = true;
         SceneManager.LoadScene("Gameplay", LoadSceneMode.Additive);
     }
 
     private void Start() {
         _timer = FindObjectOfType<GameTimer>();
+        _gameManager = FindObjectOfType<GameManager>();
+        _gameManager.PauseGame();
         _timer.StopTimer();
         StartCoroutine(nameof(LoadMenu));            
     }

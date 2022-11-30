@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 288
+  spritePixelsToUnits: 287
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -1640,7 +1640,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       TileSheet1_53: 314466990
-      TileSheet1_20: 495936415
+      TileSheet1_25: 1030860338
       TileSheet1_22: 1245513153
       TileSheet1_61: 838668300
       TileSheet1_19: -974022880
@@ -1674,19 +1674,19 @@ TextureImporter:
       TileSheet1_55: 660820414
       TileSheet1_43: -939139583
       TileSheet1_49: 1547125519
-      TileSheet1_6: -819882738
       TileSheet1_72: -1941938932
+      TileSheet1_6: -819882738
       TileSheet1_44: -1342975686
       TileSheet1_54: 1061558188
-      TileSheet1_57: 1509108713
+      TileSheet1_60: -1030414657
       TileSheet1_46: -1310771521
+      TileSheet1_57: 1509108713
       TileSheet1_67: -481045709
       TileSheet1_33: 1550676564
       TileSheet1_3: -317300095
       TileSheet1_2: -1616529504
       TileSheet1_24: -1096808344
       TileSheet1_35: -361451073
-      TileSheet1_60: -1030414657
       TileSheet1_27: -984705708
       TileSheet1_52: -279457381
       TileSheet1_23: 490239857
@@ -1710,8 +1710,8 @@ TextureImporter:
       TileSheet1_40: 1332646588
       TileSheet1_14: 83567179
       TileSheet1_34: -1884246616
-      TileSheet1_25: 1030860338
       TileSheet1_5: -571214235
+      TileSheet1_20: 495936415
       TileSheet1_11: -1309197308
   spritePackingTag: 
   pSDRemoveMatte: 0
