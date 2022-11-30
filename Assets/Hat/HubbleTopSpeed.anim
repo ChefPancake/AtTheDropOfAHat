@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PlayerJumpTakeoffOld
+  m_Name: HubbleTopSpeed
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,7 +20,7 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 518769167, guid: 93accf96cc33ae3439a6f62ddb5cec1d, type: 3}
+      value: {fileID: 1259782460, guid: 20c057047bb172e4a930e82c3ae1bac6, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -40,7 +40,7 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 518769167, guid: 93accf96cc33ae3439a6f62ddb5cec1d, type: 3}
+    - {fileID: 1259782460, guid: 20c057047bb172e4a930e82c3ae1bac6, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

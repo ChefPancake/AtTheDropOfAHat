@@ -240,6 +240,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6439194563160223888, guid: 8b51cdeabca73eb43a1eb804d5427fad, type: 3}
   m_PrefabInstance: {fileID: 1006633947}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &951472862 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 883498238358409311, guid: 9e6b5d967828b0a4db27f804baf7866d, type: 3}
+  m_PrefabInstance: {fileID: 1866131618}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &951472869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951472862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e87f759c23ff5a744b58710f27ee22eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &990056499
 GameObject:
   m_ObjectHideFlags: 0
@@ -673,6 +690,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 358270610452870509, guid: 9e6b5d967828b0a4db27f804baf7866d, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 883498238358409305, guid: 9e6b5d967828b0a4db27f804baf7866d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 301865201, guid: 20c057047bb172e4a930e82c3ae1bac6, type: 3}
+    - target: {fileID: 883498238358409305, guid: 9e6b5d967828b0a4db27f804baf7866d, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 883498238358409305, guid: 9e6b5d967828b0a4db27f804baf7866d, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 883498238358409305, guid: 9e6b5d967828b0a4db27f804baf7866d, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 883498238837413668, guid: 9e6b5d967828b0a4db27f804baf7866d, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -721,6 +758,22 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 575808040}
+    - target: {fileID: 883498238837413669, guid: 9e6b5d967828b0a4db27f804baf7866d, type: 3}
+      propertyPath: _offsetOnPlayer.x
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 883498238837413669, guid: 9e6b5d967828b0a4db27f804baf7866d, type: 3}
+      propertyPath: _offsetOnPlayer.y
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 883498238837413670, guid: 9e6b5d967828b0a4db27f804baf7866d, type: 3}
+      propertyPath: m_Radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 883498238837413670, guid: 9e6b5d967828b0a4db27f804baf7866d, type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 883498238837413722, guid: 9e6b5d967828b0a4db27f804baf7866d, type: 3}
       propertyPath: m_Name
       value: Hat

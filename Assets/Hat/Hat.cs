@@ -75,6 +75,7 @@ namespace DropOfAHat.Hat {
     }
     
     public class Hat : MonoBehaviour {
+        private const string IS_LANDING_ANIMATION_STATE = "IsLanding";
         private const string IS_ON_OBJECT_ANIMATION_STATE = "IsOnPlayer";
         private const string IS_POPPED_ANIMATION_STATE = "IsPopped";
         private const string VELOCITY_ANIMATION_STATE = "Velocity";
@@ -137,11 +138,12 @@ namespace DropOfAHat.Hat {
 
         public void Catch(GameObject caughtBy, bool canThrow) {
             _hatState = _hatState.Catch(caughtBy, canThrow);
-            _animator.SetBool(IS_ON_OBJECT_ANIMATION_STATE, true);
-            _animator.SetBool(IS_POPPED_ANIMATION_STATE, false);
-            _animator.SetFloat(VELOCITY_ANIMATION_STATE, 0f);
             SetPhysics(_hatState.CanInteract);
             if (_hatState is HatOnObject) {
+                _animator.SetBool(IS_LANDING_ANIMATION_STATE, true);
+                _animator.SetBool(IS_ON_OBJECT_ANIMATION_STATE, true);
+                _animator.SetBool(IS_POPPED_ANIMATION_STATE, false);
+                _animator.SetFloat(VELOCITY_ANIMATION_STATE, 0f);
                 _events.Send(new CaughtEvent(caughtBy));
             }
         }
@@ -149,7 +151,9 @@ namespace DropOfAHat.Hat {
         private void OnThrown(PlayerThrow.HatThrown thrown) {
             if (_hatState.CanThrow) {
                 _hatState = _hatState.Throw();
+                _animator.SetFloat(VELOCITY_ANIMATION_STATE, thrown.ThrowVec.magnitude);
                 _animator.SetBool(IS_ON_OBJECT_ANIMATION_STATE, false);
+                _animator.SetBool(IS_LANDING_ANIMATION_STATE, false);
                 SetPhysics(_hatState.CanInteract);
                 _rigidBody.velocity = thrown.ThrowVec;
             }
