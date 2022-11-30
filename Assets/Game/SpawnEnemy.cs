@@ -5,6 +5,8 @@ namespace DropOfAHat.Game {
     public class SpawnEnemy : MonoBehaviour {
         [SerializeField]
         private GameObject _enemyPrefab;
+        [SerializeField]
+        private bool _isEnabled;
     
         private GameEvents _events;
         private uint _spawnOrdinal;
@@ -22,7 +24,7 @@ namespace DropOfAHat.Game {
         }
 
         private void OnLevelLoad(GameManager.LevelStartEvent started) {
-            if (started.CheckpointOrdinal == _spawnOrdinal) {
+            if (_isEnabled && started.CheckpointOrdinal == _spawnOrdinal) {
                 _instance = Instantiate(_enemyPrefab, transform.position.WithZeroZ(), Quaternion.identity);
             }
         }
