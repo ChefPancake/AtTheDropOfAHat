@@ -818,5 +818,25 @@ PrefabInstance:
       propertyPath: _floatLengthSeconds
       value: 0.8
       objectReference: {fileID: 0}
+    - target: {fileID: 2694260666738244705, guid: 6a8139830cf28d14eb75f69ede3244a4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 567779643, guid: eb7d8fb0f0a02f44ca1e2264de279f28, type: 3}
+    - target: {fileID: 2694260666738244705, guid: 6a8139830cf28d14eb75f69ede3244a4, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2694260666738244705, guid: 6a8139830cf28d14eb75f69ede3244a4, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2694260666738244705, guid: 6a8139830cf28d14eb75f69ede3244a4, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2694260666738244706, guid: 6a8139830cf28d14eb75f69ede3244a4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.21
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a8139830cf28d14eb75f69ede3244a4, type: 3}
