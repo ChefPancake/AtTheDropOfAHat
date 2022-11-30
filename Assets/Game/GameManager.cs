@@ -26,27 +26,28 @@ namespace DropOfAHat.Game {
         private bool _hatAtEnd = false;
         private bool LevelComplete => _playerAtEnd && _hatAtEnd;
 
+        private void Awake() {
+            _musicAudio = GetComponent<AudioSource>();
+        }
+
         private void Start() {
             _player = _player ?? FindObjectOfType<PlayerMovement>().gameObject;
             _events = FindObjectOfType<GameEvents>();
             _levels = FindObjectOfType<LevelManager>();
-            _musicAudio = GetComponent<AudioSource>();
             _events.Subscribe<Hat.Hat.DroppedEvent>(OnHatDropped);
             _events.Subscribe<LevelStart.LevelLoadedEvent>(OnLevelLoaded);
             _events.Subscribe<HitBroadcast.HitEvent>(OnHitBroadcast);
             _events.Subscribe<HitBroadcast.LeftEvent>(OnLeftBroadcast);
-            _musicAudio.Play();
         }
 
         public void PauseGame() {
-            _musicAudio.Pause();
             foreach (var obj in _objectsToDisableOnPause) {
                 obj.SetActive(false);
             }
         }
 
         public void StartGame() {
-            _musicAudio.UnPause();
+            _musicAudio.Play();
             foreach (var obj in _objectsToDisableOnPause) {
                 obj.SetActive(true);
             }

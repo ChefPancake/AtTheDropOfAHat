@@ -24,6 +24,7 @@ public class GameStart : MonoBehaviour {
         _timer = FindObjectOfType<GameTimer>();
         _gameManager = FindObjectOfType<GameManager>();
         _buttons = GetComponentsInChildren<MenuButton>();
+        _music = GetComponent<AudioSource>();
         _gameManager.PauseGame();
         _timer.StopTimer();
         StartCoroutine(nameof(LoadMenu));            
@@ -32,13 +33,13 @@ public class GameStart : MonoBehaviour {
     public void ButtonClick(string eventName) {
         if (eventName.Equals("StartGame")) {
             StartCoroutine(StartGame());
+            _music.Stop();
         }
     }
 
     private IEnumerator LoadMenu() {
         yield return new WaitForSeconds(2f);
-        //play the menu song
-
+        _music.Play();
         _logo.enabled = true;
         yield return new WaitForSeconds(3f);
         Color color = _gameCover.material.color;
