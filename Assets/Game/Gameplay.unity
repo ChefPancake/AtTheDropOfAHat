@@ -148,7 +148,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 54497716}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1.9247795}
+  m_LocalPosition: {x: 1, y: -1.2000008, z: -1.9247795}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -292,6 +292,14 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 1824627535}
+    - target: {fileID: 6439194562965838148, guid: 8b51cdeabca73eb43a1eb804d5427fad, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11.905742
+      objectReference: {fileID: 0}
+    - target: {fileID: 6439194562965838148, guid: 8b51cdeabca73eb43a1eb804d5427fad, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.894309
+      objectReference: {fileID: 0}
     - target: {fileID: 6439194563103718711, guid: 8b51cdeabca73eb43a1eb804d5427fad, type: 3}
       propertyPath: m_Name
       value: Camera
@@ -302,11 +310,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6439194563103718712, guid: 8b51cdeabca73eb43a1eb804d5427fad, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6439194563103718712, guid: 8b51cdeabca73eb43a1eb804d5427fad, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.2000008
       objectReference: {fileID: 0}
     - target: {fileID: 6439194563103718712, guid: 8b51cdeabca73eb43a1eb804d5427fad, type: 3}
       propertyPath: m_LocalPosition.z
@@ -340,6 +348,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6439194563160223888, guid: 8b51cdeabca73eb43a1eb804d5427fad, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -34.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 6439194563160223888, guid: 8b51cdeabca73eb43a1eb804d5427fad, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.980001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6439194563160223888, guid: 8b51cdeabca73eb43a1eb804d5427fad, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b51cdeabca73eb43a1eb804d5427fad, type: 3}
 --- !u!1001 &1667271463
@@ -349,6 +369,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1651451161, guid: 73b1a9a833fc68c41a933a6449b8b80c, type: 3}
+      propertyPath: _levelScenes.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651451161, guid: 73b1a9a833fc68c41a933a6449b8b80c, type: 3}
+      propertyPath: _levelScenes.Array.data[0]
+      value: Level0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651451161, guid: 73b1a9a833fc68c41a933a6449b8b80c, type: 3}
+      propertyPath: _levelScenes.Array.data[1]
+      value: Level1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651451161, guid: 73b1a9a833fc68c41a933a6449b8b80c, type: 3}
+      propertyPath: _levelScenes.Array.data[2]
+      value: Level2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651451161, guid: 73b1a9a833fc68c41a933a6449b8b80c, type: 3}
+      propertyPath: _levelScenes.Array.data[3]
+      value: Level3
+      objectReference: {fileID: 0}
     - target: {fileID: 3227199235560135974, guid: 73b1a9a833fc68c41a933a6449b8b80c, type: 3}
       propertyPath: m_Name
       value: Game
@@ -401,6 +441,10 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 575808040}
+    - target: {fileID: 3227199236494792354, guid: 73b1a9a833fc68c41a933a6449b8b80c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73b1a9a833fc68c41a933a6449b8b80c, type: 3}
 --- !u!1 &1687369127
@@ -498,7 +542,7 @@ GameObject:
   - component: {fileID: 1824627535}
   - component: {fileID: 1824627534}
   m_Layer: 0
-  m_Name: Centroid
+  m_Name: GameplayCameraFocus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

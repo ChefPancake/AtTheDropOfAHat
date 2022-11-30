@@ -74,7 +74,7 @@ namespace DropOfAHat.Game {
 
         private void OnLevelLoaded(LevelStart.LevelLoadedEvent loadedEvent) {
             _musicAudio.Stop();
-            _musicAudio.Play();
+            //_musicAudio.Play();
             _player.transform.position =
                 FindObjectsOfType<Checkpoint>()
                     .FirstOrDefault(x => x.Ordinal.Equals(_lastCheckpointOrdinal))?
