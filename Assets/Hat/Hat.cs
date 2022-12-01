@@ -183,7 +183,6 @@ namespace DropOfAHat.Hat {
 
         private void OnTriggerEnter2D(Collider2D other) {
             if (other.gameObject.TryGetComponent<HatCatcher>(out var catcher)) {
-                Debug.Log(catcher.CanThrowFrom);
                 Catch(other.gameObject, catcher.CanThrowFrom);
             } else if (other.gameObject.CompareTag("World") || other.gameObject.CompareTag("Enemy")) {
                 Pop();

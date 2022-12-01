@@ -113,6 +113,8 @@ namespace DropOfAHat.Game {
         }
 
         private void OnLevelLoaded(LevelStart.LevelLoadedEvent loadedEvent) {
+            try {
+
             var checkpoint = 
                 FindObjectsOfType<Checkpoint>()
                 .FirstOrDefault(x => x.Ordinal.Equals(_lastCheckpointOrdinal));
@@ -120,7 +122,14 @@ namespace DropOfAHat.Game {
             _player.transform.position =
                 checkpoint?.transform.position.WithZ(_player.transform.position.z)
                     ?? loadedEvent.Start.transform.position.WithZeroZ();
+            if (_player.TryGetComponent<PlayerDeath>(out var death)) {
+                death.Revive();
+            }
             _events.Send<LevelStartEvent>(new LevelStartEvent(_lastCheckpointOrdinal));
+            }
+            catch (Exception ex) {
+                Debug.LogError($"{ex.Message}: {ex.StackTrace}");
+            }
         }
 
         private IEnumerator DelayThenRun(float seconds, Action action) {

@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 575808048}
   - component: {fileID: 575808049}
   - component: {fileID: 575808050}
+  - component: {fileID: 6942992858266048010}
   m_Layer: 0
   m_Name: Huck
   m_TagString: Player
@@ -275,6 +276,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canThrowFrom: 1
+  _hatOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &6942992858266048010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2694260665997512454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deedfc50ec5be5445ae18047fbed85d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _deathSound: {fileID: 8300000, guid: b57b818d8efb4db48a4e06ee64f0a738, type: 3}
 --- !u!1 &2694260666738244701
 GameObject:
   m_ObjectHideFlags: 0

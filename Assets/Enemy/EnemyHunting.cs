@@ -18,6 +18,11 @@ namespace DropOfAHat.Enemy {
                 ?? throw new ArgumentNullException(nameof(_hat), "Must have Hat in the scene");
             _rigidBody = GetComponent<Rigidbody2D>();
             _events = FindObjectOfType<GameEvents>();
+            Debug.Log("Enemy Spawned");
+        }
+
+        private void OnDestroy() {
+            Debug.Log("Enemy Destroyed");
         }
 
         private void Update() {

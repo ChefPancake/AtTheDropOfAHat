@@ -19,6 +19,7 @@ namespace DropOfAHat.Game {
                 transform.parent?
                 .GetComponentInChildren<Checkpoint>()?
                 .Ordinal ?? 0;
+            Debug.Log($"Spawn Ordinal {_spawnOrdinal}");
             _events.Subscribe<GameManager.LevelStartEvent>(OnLevelLoad);
             _events.Subscribe<GameManager.LevelEndedEvent>(OnLevelEnd);
         }
