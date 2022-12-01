@@ -673,6 +673,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 575808049, guid: 6a8139830cf28d14eb75f69ede3244a4, type: 3}
+      propertyPath: m_Volume
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 575808050, guid: 6a8139830cf28d14eb75f69ede3244a4, type: 3}
       propertyPath: _hatOffset.x
       value: 0.15
