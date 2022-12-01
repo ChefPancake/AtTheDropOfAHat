@@ -29,6 +29,7 @@ namespace DropOfAHat.Game {
 
         private bool _playerAtEnd = false;
         private bool _hatAtEnd = false;
+        private bool _resettingLevel = false;
         private bool LevelComplete => _playerAtEnd && _hatAtEnd;
 
         private void Awake() {
@@ -94,8 +95,12 @@ namespace DropOfAHat.Game {
             SceneManager.LoadScene(_endSceneName, LoadSceneMode.Additive);
         }
 
-        private void OnHatDropped(Hat.Hat.DroppedEvent _) =>
-            StartCoroutine(DelayThenRun(_delayAfterLoseSeconds, ReloadLevel));
+        private void OnHatDropped(Hat.Hat.DroppedEvent _) {
+            if (!_resettingLevel) {
+                _resettingLevel = true;
+                StartCoroutine(DelayThenRun(_delayAfterLoseSeconds, ReloadLevel));
+            }
+        }
 
         private void ReloadLevel() {
             foreach (var enemy in FindObjectsOfType<EnemyHunting>()) {
@@ -103,6 +108,7 @@ namespace DropOfAHat.Game {
             }
             _playerAtEnd = false;
             _hatAtEnd = false;
+            _resettingLevel = false;
             _levels.ReloadCurrentLevel();
         }
 
