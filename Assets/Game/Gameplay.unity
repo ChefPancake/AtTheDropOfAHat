@@ -359,6 +359,10 @@ PrefabInstance:
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1651451161, guid: 73b1a9a833fc68c41a933a6449b8b80c, type: 3}
+      propertyPath: _currentSceneIndex
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651451161, guid: 73b1a9a833fc68c41a933a6449b8b80c, type: 3}
       propertyPath: _levelScenes.Array.size
       value: 4
       objectReference: {fileID: 0}
