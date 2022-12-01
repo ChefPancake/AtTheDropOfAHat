@@ -33,6 +33,16 @@ namespace DropOfAHat.Enemy {
                 Vector2.ClampMagnitude(_rigidBody.velocity, _maxSpeed);
         }
 
+        private void FixedUpdate() {
+            transform.localScale =
+                new Vector3(
+                    _rigidBody.velocity.x > 0f 
+                        ? 1.0f 
+                        : -1.0f,
+                    1f,
+                    1f);
+        }
+
         private void OnTriggerEnter2D(Collider2D other) {
             if (other.gameObject.CompareTag("Player")) {
                 _events.Send<Hat.Hat.DroppedEvent>(new Hat.Hat.DroppedEvent());
