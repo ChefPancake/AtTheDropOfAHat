@@ -113,10 +113,17 @@ namespace DropOfAHat.Hat {
             var velocity = _rigidBody.velocity;
             var up = Vector3.up;
             var angle = Vector3.Angle(up, velocity);
+
+            var minVel = 5f;
+            var maxVel = 15f;
+            var lerpBy = (Mathf.Clamp(velocity.magnitude, minVel, maxVel) - minVel) / (maxVel - minVel);
+            angle = Mathf.LerpAngle(0f, angle, lerpBy);
+
             angle = velocity.x > 0
                 ? -angle
                 : angle;
             transform.rotation = Quaternion.Euler(0f, 0f, angle);
+
             _animator.SetFloat(
                 VELOCITY_ANIMATION_STATE,
                 velocity.magnitude);
