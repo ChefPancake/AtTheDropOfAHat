@@ -333,6 +333,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6439194563160223888, guid: 8b51cdeabca73eb43a1eb804d5427fad, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11.905742
+      objectReference: {fileID: 0}
+    - target: {fileID: 6439194563160223888, guid: 8b51cdeabca73eb43a1eb804d5427fad, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.894309
+      objectReference: {fileID: 0}
+    - target: {fileID: 6439194563160223888, guid: 8b51cdeabca73eb43a1eb804d5427fad, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -8.07522
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b51cdeabca73eb43a1eb804d5427fad, type: 3}
 --- !u!1001 &1667271463
@@ -342,9 +354,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 966390162, guid: 73b1a9a833fc68c41a933a6449b8b80c, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1651451161, guid: 73b1a9a833fc68c41a933a6449b8b80c, type: 3}
       propertyPath: _levelScenes.Array.size
-      value: 1
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651451161, guid: 73b1a9a833fc68c41a933a6449b8b80c, type: 3}
+      propertyPath: _levelScenes.Array.data[1]
+      value: Level1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651451161, guid: 73b1a9a833fc68c41a933a6449b8b80c, type: 3}
+      propertyPath: _levelScenes.Array.data[2]
+      value: Level2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651451161, guid: 73b1a9a833fc68c41a933a6449b8b80c, type: 3}
+      propertyPath: _levelScenes.Array.data[3]
+      value: Level3
       objectReference: {fileID: 0}
     - target: {fileID: 3227199235560135974, guid: 73b1a9a833fc68c41a933a6449b8b80c, type: 3}
       propertyPath: m_Name
@@ -645,6 +673,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 575808050, guid: 6a8139830cf28d14eb75f69ede3244a4, type: 3}
+      propertyPath: _hatOffset.x
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 575808050, guid: 6a8139830cf28d14eb75f69ede3244a4, type: 3}
+      propertyPath: _hatOffset.y
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 575808050, guid: 6a8139830cf28d14eb75f69ede3244a4, type: 3}
+      propertyPath: _hatOffset.z
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 2694260665997512453, guid: 6a8139830cf28d14eb75f69ede3244a4, type: 3}
       propertyPath: _airAccel
       value: 10

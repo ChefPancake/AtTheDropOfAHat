@@ -82,8 +82,6 @@ namespace DropOfAHat.Hat {
 
         [SerializeField]
         private GameObject _player;
-        [SerializeField]
-        private Vector3 _offsetOnPlayer;
 
         private Rigidbody2D _rigidBody;
         private Collider2D _collider;
@@ -125,8 +123,10 @@ namespace DropOfAHat.Hat {
         }
 
         private void Update() {
-            if (_hatState is HatOnObject hat && hat.OnObject) {
-                transform.position = hat.OnObject.transform.position + _offsetOnPlayer;
+            if (_hatState is HatOnObject hat 
+                    && hat.OnObject 
+                    && hat.OnObject.TryGetComponent<HatCatcher>(out var catcher)) {
+                transform.position = hat.OnObject.transform.position + catcher.HatOffset;
                 transform.rotation = Quaternion.identity;
             }
         }
