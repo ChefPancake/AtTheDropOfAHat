@@ -7,5 +7,8 @@ namespace DropOfAHat.Utilities {
 
         public static Vector3 WithZ(this Vector3 vec, float z) =>
             new Vector3(vec.x, vec.y, z);
+
+        public static Vector2 AsVector2(this Vector3 vec) =>
+            new Vector2(vec.x, vec.y);
     }
 }

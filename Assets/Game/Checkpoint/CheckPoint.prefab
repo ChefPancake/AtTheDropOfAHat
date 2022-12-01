@@ -156,6 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ordinal: 1
   _popSound: {fileID: 8300000, guid: b57b818d8efb4db48a4e06ee64f0a738, type: 3}
+  _popForce: 100
 --- !u!95 &8713420059873342588
 Animator:
   serializedVersion: 4
